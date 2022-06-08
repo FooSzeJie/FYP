@@ -37,6 +37,8 @@ Route::post('/addCourse/store',[App\Http\Controllers\CourseController::class,'ad
 
 Route::get('viewCourse',[App\Http\Controllers\CourseController::class,'view'])->name('viewCourse');
 
+Route::get('viewCategory',[App\Http\Controllers\CategoryController::class,'view'])->name('viewCategory');
+
 Route::get('showCourse',[App\Http\Controllers\CourseController::class,'show'])->name('showCourse');
 
 Route::get('editCourse/{id}',[App\Http\Controllers\CourseController::class,'edit'])->name('editCourse');

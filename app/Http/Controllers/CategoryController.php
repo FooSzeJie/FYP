@@ -16,5 +16,7 @@ class CategoryController extends Controller
         $addCategory=Category::create([
             'name'=>$r->categoryName,
         ]);
+
+        Return redirect()->route('viewCategory');
     }
 }
