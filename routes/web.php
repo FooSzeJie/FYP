@@ -19,12 +19,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/index',function(){
-    return view('index');
-});
-
 Route::get('/addCategory',function(){
     return view('addCategory');
+});
+
+/*Route::get('/event', function () {
+    return view('event');
+});*/
+
+Route::get('/event', function () {
+    return view('viewEvent');
+});
+
+Route::get('/EMathEvent', function () {
+    return view('EMathEvent');
+});
+
+Route::get('/EMathGame', function () {
+    return view('EMathGame');
 });
 
 Route::get('/addCourse',function(){
@@ -44,6 +56,16 @@ Route::get('showCourse',[App\Http\Controllers\CourseController::class,'show'])->
 Route::get('editCourse/{id}',[App\Http\Controllers\CourseController::class,'edit'])->name('editCourse');
 
 Route::post('updateCourse',[App\Http\Controllers\CourseController::class,'update'])->name('updateCourse');
+
+Route::post('/addCourse/store',[App\Http\Controllers\CourseController::class,'add'])->name('addMaterial');
+
+//Route::get('viewEvent',[App\Http\Controllers\EventController::class,'view'])->name('viewEvent');
+/*
+Route::get('{viewEvent.blade.php}', function($viewEvent)
+ {
+     //
+     return view::make('frontend/'.$viewEvent);
+ });*/
 
 // user protected routes
 Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {

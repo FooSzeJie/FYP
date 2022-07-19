@@ -24,10 +24,10 @@
     <div id="menu" class="fas fa-bars"></div>
 
     <nav class="navbar">
-        <a href="index.html">home</a>
+        <a href="{{ asset('/') }}">home</a>
         <a href="course.html">course</a>
         <a href="teacher.html">teacher</a>
-        <a href="event.html">event</a>
+        <a href= "{{ asset('event') }}">event</a>
         <!--<a href="price.html">price</a>-->
         <a href="review.html">review</a>
         <a href="contact.html">contact</a>
@@ -56,7 +56,7 @@ users learn more easily.</p>
             <a href="index.html">home</a>
             <a href="course.html">course</a>
             <a href="teacher.html">teacher</a>
-            <a href="event.html">event</a>
+            <a href="{{ asset('event') }}">event</a>
             <!--<a href="price.html">price</a>-->
             <a href="review.html">review</a>
             <a href="contact.html">contact</a>

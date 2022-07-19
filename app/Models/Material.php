@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Material extends Model
 {
     use HasFactory;
-
-    protected $fillable=['id','name','score',];
+    protected $fillable=['id','video','title','description','comment'];
 }

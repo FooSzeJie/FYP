@@ -1,6 +1,8 @@
-@extends('layouts')
-@section('content')
-<head>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Elementary English</title>
    <style>
        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -177,7 +179,10 @@ text{
 }
       
    </style>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
  </head>
+
  <body>
     <div class="box">
    <!--<div class="menu-btn">
@@ -186,15 +191,8 @@ text{
    <div class="side-bar">
     <br>
      <text style="left: 20px"><strong>E.EDU.Center</strong></text>
-
-     <!--<div class="close-btn">
-         <text style="padding-left:-10px">
-         E.EDU.Center
-         </text>
-       <i class="fas fa-times"></i>
-     </div>-->
      <div class="menu">
-       <div class="item"><a href="material_E_ENGL.html"><i class="fas fa-desktop"></i>Dashboard</a></div>
+       <div class="item"><a href="{{ asset('')}}"><i class="fas fa-desktop"></i>Dashboard</a></div>
        <div class="item">
          <a class="sub-btn"><i class="fas fa-table"></i>Material<i class="fas fa-angle-right dropdown"></i></a>
          <div class="sub-menu">
@@ -216,65 +214,13 @@ text{
          </div>
        </div>
        <div class="item"><a href="#"><i class="fas fa-info-circle"></i>About</a></div>
-              <div class="item"><a href="E_CHINESE.html"><i class="fas fa-log-out"></i>Exit</a></div>
+              <div class="item"><a href="E_ENGL.html"><i class="fas fa-log-out"></i>Exit</a></div>
      </div>
    </div>
    <!--<section class="main">
      <h1></h1>
    </section>-->
-   <div class="contentbox">
-    <br>
-       <h2 >Welcome to Elementary Chinese Course provided by E.EDU.Center</h2>
-       <br>
-       <img src="images/E_CHINESE.png" width="350px" height="200px">
-       <br><br>
-       <h3>Description</h3>
-            <br>
-            <p>5-week course provided by this Elementary Chinese, it will help you learn basic Chinese skills. This course that aims to help beginners develop communicative competence in the basic four skills (listening, speaking, reading and writing) and culture of Chinese. The course curriculum is organized around the 5 Cs principles of the National Standards for Foreign Language Education for the 21st Century – Communication, Cultures, Comparisons, Connections and Communities. Elementary Chinese 1 covers 8 units. We recommend that students go through the units in order to take advantage of the systematic scope and sequence of the learning materials. However, the curriculum is also flexible for individuals and institutions to adopt and modify to meet their different needs, schedule and emphasis.</p>
-            <br><br>
-            <h3>Topics Covered:</h3>
-            <br>
-            <li>Foundation: pinyin and basic expressions</li>
-            <li>Greetings</li>
-            <li>Names</li>
-            <li>Nationalities and languages</li>
-            <li>Talking about studies</li>
-            <li>Talking about yourself and your family</li>
-            <li>Making phone calls</li>
-            <br><br>
-            <h3>Course structure</h3>
-            <br>
-            <p>Elementary Chinese 1 is part of a two-part sequence. The units in both courses have a consistent structure, containing the following main content and activities:</p>
-            <br><br>
-            <h3>Main Content</h3>
-            <br>
-            <li>Objective</li>
-            <li>Main video (+questions)</li>
-            <li>Video preview exercises</li>
-            <li>Text of the video</li>
-            <li>Text translation and pinyin with slower audio (students are strongly encouraged to listen and repeat after the sound files)</li>
-            <li>Text notes</li>
-            <li>Vocabulary tables</li>
-            <li>Video comprehension exercises</li>
-            <br>
-            <h3>II. Listening</h3>
-            <li>Pinyin recognition exercise</li>
-            <li>True and false exercise</li>
-            <li>Translation exercise</li>
-            <li>Question answering exercise</li>
-            <br>
-            <h3>III. Grammar</h3>
-            <li>Grammar notes</li>
-            <li>Sentence jumble exercise</li>
-            <li>Dialogue jumble exercise</li>
-            <br>
-            <h3>IV. Reading Exercises</h3>
-            <li>Reading comprehension</li>
-            <br>
-            <h3>Consolidation Exercises</h3>
-            <li>Picture description exercise</li>
-            <br>
-       </div>
+   @yield('content2')
 
    <script type="text/javascript">
    $(document).ready(function(){
@@ -298,4 +244,4 @@ text{
    </script>
     </div>
  </body>
-@endsection
+</html>

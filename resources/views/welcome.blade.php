@@ -41,10 +41,12 @@
                     <h1>River Flows in You - feat. Yiruma, Jeroen van Veen</h1>
                     <p>Album - First Love</p>
                     <div class="audio">
-                    <audio id="player" controls autoplay>
+                    <audio id="player" loop autoplay controls>
                         <source src="song/media/River Flows in You.ogg" type="audio/ogg">
-                        <source src="song/media/River Flows in You.mp3" type="audio/mpeg">
+                        <source src="song/media/River Flows in You.mp3" type="audio/mpeg"> 
                     </audio>
+
+                    <!--<iframe src="song/media/River Flows in You.mp3" allow="autoplay" id="player"></iframe>-->
                 </div>
 
         </div>
