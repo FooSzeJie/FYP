@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Material extends Model
 {
     use HasFactory;
-    protected $fillable=['id','video','title','description','comment'];
+    protected $fillable=['id','name','video','description','courseID'];
+
+    public function material(){
+        return $this->belongsTo('App\Models\Course');
+    }
 }

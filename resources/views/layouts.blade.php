@@ -15,7 +15,11 @@
 
 </head>
 <body>
-
+@if(Session::has('Success'))
+      <div class="alert alert-success" role="alert">
+        {{ Session::get('Success')}}
+      </div>
+    @endif
 <div class="container">
 <header>
 
@@ -25,13 +29,13 @@
 
     <nav class="navbar">
         <a href="{{ asset('/') }}">home</a>
-        <a href="course.html">course</a>
+        <a href="{{ asset('viewCourse') }}">course</a>
         <a href="teacher.html">teacher</a>
         <a href= "{{ asset('event') }}">event</a>
         <!--<a href="price.html">price</a>-->
-        <a href="review.html">review</a>
+        <a href="{{ asset('viewComment') }}">review</a>
         <a href="contact.html">contact</a>
-	<a href="login.html">login</a>
+	<a href="{{ asset('login') }}">login</a>
     </nav>
 
 </header>
@@ -54,7 +58,7 @@ users learn more easily.</p>
         <div class="box">
             <h3>quick links</h3>
             <a href="index.html">home</a>
-            <a href="course.html">course</a>
+            <a href="{{ asset('viewCourse') }}">course</a>
             <a href="teacher.html">teacher</a>
             <a href="{{ asset('event') }}">event</a>
             <!--<a href="price.html">price</a>-->

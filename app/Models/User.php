@@ -19,8 +19,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'profileImage',
         'email',
         'password',
+        'role',
+        'paymentStatus',
+        'address',
+        'age',
     ];
 
     /**
@@ -33,12 +38,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function ToHrdf(){
+        return $this->hasMany('App\Models\Hrdf');
+    }
+
+    public function ToComment(){
+        return $this->hasMany('App\Models\Comment');
+    }
 }

@@ -11,14 +11,15 @@
         <div class="container">
             <div id="home" class="flex-column flex-center">
                 <h1>Are You Ready?</h1>
-                <form action="{{asset('EMathGame')}}" method="POST">
+                <form action="{{route('EMathEvent')}}" method="POST">
                     @CSRF
                     <div class="form-group">
-                        <input type="text" class="form-control" id="playerName" name="playerName" placeholder="Player Name" style="font-size: 2.0rem; padding: 2rem 0; width: 25rem; text-align: center; margin-bottom: 1rem;">
+                        <input type="text" class="form-control" id="playerName" name="playerName" placeholder="Player Name" style="font-size: 2.0rem; padding: 2rem 0; width: 25rem; text-align: center; margin-bottom: 1rem;">            
+                        <input type="hidden" class="form-control" id="score" name="score" value = 0>            
                     </div>
+                    <button type="submit" class="btn btn-primary">Play </button>
                 </form>
-                <button type="submit" class="btn btn-primary">Play </button>
-                <a href="highscores.html" id="highscore-btn" class="btn">High Scores<i class="fas fa-crown"></i></a>
+                <a href="{{ asset ('EMathScore') }}" id="highscore-btn" class="btn">High Scores<i class="fas fa-crown"></i></a>
             </div>
             
         </div>

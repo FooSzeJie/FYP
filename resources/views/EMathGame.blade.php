@@ -110,7 +110,7 @@ getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score)
 
-        return window.location.assign('/end.html')
+        return window.location.href='{{ route('EMathScore') }}'
     }
 
     questionCounter++
@@ -160,7 +160,24 @@ incrementScore = num => {
     scoreText.innerText = score
 }
 
+window.onload = function(){
+    var button = document.getElementById('clickButton');
+    button.form.submit();
+}
+
 startGame()
     </script>
+    
+    <form action="{{ route('EMathGame') }}" method="POST" enctype="multipart/form-data">
+        @CSRF
+        @foreach($events as $event)
+        <div class="form-group">
+            <input type="hidden" name="id" id="id" value="{{$event->id}}">
+            <input type="hidden" name="score" id="score" value="{{$event->score}}">
+        </div>       
+
+        @endforeach
+        <button type="submit" id="clickButton" class="btn btn-primary"> Comfirm </button>
+    </form>
 </body>
 </html>

@@ -15,10 +15,10 @@ class CreateMaterialsTable extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('video');
-            $table->string('title');
             $table->text('description');
-            $table->text('comment');
+            $table->string('courseID');
             $table->timestamps();
         });
     }

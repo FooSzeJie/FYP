@@ -8,6 +8,11 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Auth;
+use DB;
+
+
 
 class RegisterController extends Controller
 {
@@ -51,8 +56,13 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'profileImage'=>['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role'=>['required','string','max:255'],
+            'salary'=>['required'],
+            'education_level'=>['required','string','max:255'],
+
         ]);
     }
 
@@ -64,10 +74,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $r=request();
+
+        $profileImage = $r->file('profileImage');
+        $profileImage -> move('profileImage',$profileImage->getClientOriginalName());
+        $profileImage_url = $profileImage->getClientOriginalName();
+
         return User::create([
             'name' => $data['name'],
+            'profileImage' => $profileImage_url,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role'=>$data['role'],
+            'salary'=>$data['salary'],
+            'education_level'=>$data['education_level'],
         ]);
+
+        event(new Registered($user));
+        auth()->login($user);
+
+        return redirect('/')->with('success', "Account successfully registered.");
     }
+
 }

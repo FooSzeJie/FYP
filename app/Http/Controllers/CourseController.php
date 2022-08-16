@@ -12,25 +12,35 @@ use Auth;
 
 class CourseController extends Controller
 {
+    /*public function __construct()
+    {
+    $this->middleware('admin'); 
+    }*/
+
+
     public function add(){
+        
         $r=request();
         $image=$r->file('courseImage');        
         $image->move('images',$image->getClientOriginalName());               
         $imageName=$image->getClientOriginalName(); 
-        $addFood=Course::create([
+        $addCourse=Course::create([
             'name'=>$r->courseName,
             'amount'=>$r->amount,
-            'star'=>$r->star,
             'time'=>$r->courseTime,
             'month'=>$r->courseMonth,
             'module'=>$r->courseModule,
             'CategoryID'=>$r->CategoryID,
+            'description'=>$r->description,
             'image'=>$imageName,
+            'teacher'=>$r->teacher,
         ]);
-        Return redirect()->route('viewCourse');
+            Return redirect()->route('viewCourse');
     }
 
+
     public function view(){
+
         $courses=Course::all();
         return view('viewCourse')->with('courses',$courses);
     }
@@ -43,7 +53,7 @@ class CourseController extends Controller
     public function edit($id){
         $courses=Course::all()->where('id',$id);
         Return view('viewCourse')->with('courses',$courses)->with('CategoryID',Category::all());
-    }
+    } 
 
     public function update(){
         $r=request();
@@ -67,4 +77,43 @@ class CourseController extends Controller
 
         Return redirect()->route('viewCourse');
     }
+
+    public function detail($id){
+        $courses=Course::all()->where('id',$id);
+        Return view('CourseDetails')->with('courses',$courses)->with('CategoryID',Category::all());
+    } 
+
+    public function enroll($id){
+        $courses=Course::all()->where('id',$id);
+        Return view('EnrollClass')->with('courses',$courses);
+    } 
+
+    public function editDescription($id){
+        $courses=Course::all()->where('id',$id);
+        Return view('editEnrollClass')->with('courses',$courses);
+    } 
+
+    public function updateDescription(){
+        $r=request();
+        $courses=Course::find($r->courseID);
+        
+        if($r->file('courseImage')!=''){
+            $image=$r->file('courseImage');        
+            $image->move('images',$image->getClientOriginalName());                   
+            $imageName=$image->getClientOriginalName(); 
+            $courses->image=$imageName;
+            }  
+            
+        $courses->name=$r->courseName;
+        $courses->amount=$r->amount;
+        $courses->time=$r->courseTime;
+        $courses->month=$r->courseMonth;
+        $courses->module=$r->courseModule;
+        $courses->CategoryID=$r->CategoryID;
+        $courses->description=$r->description;
+        $courses->save();
+
+        Return redirect()->route('EnrollClass');
+    }
+
 }

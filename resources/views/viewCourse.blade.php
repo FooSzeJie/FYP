@@ -3,18 +3,12 @@
 <head>
     <title>Course</title>
     <style>
-        .checked{
-          color:var(--violet);
-          font-size: 1.5rem;
-          padding:1rem 0;
-        }
-        .unchecked{
-          font-size: 1.5rem;
-          padding:1rem 0;
-        }
-        
+      img{
+        display: flex; 
+        max-width:100%;
+        width:100px;  
+      }
     </style>
-    
 </head>
 
 <div class="container">
@@ -31,33 +25,12 @@
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
             <img src="{{ asset('images/') }}/{{$course->image}}" alt="">
-            <div id="div{{$course->id}}">
-              <script>
-                star()
-
-                function star() {
-                    var numberOfStar = {{$course->star}};
-                                  
-                    var totalNumberOfStar = 5 - numberOfStar;
-                    var span = document.getElementById("div{{$course->id}}");
-                    for (numberOfStar; numberOfStar > 0; numberOfStar--) {
-                        var spanStar = document.createElement('span');
-                        spanStar.classList.add("checked");
-                        spanStar.classList.add("fa");
-                        spanStar.classList.add("fa-star");
-                        span.appendChild(spanStar);
-                    }
-                    for (totalNumberOfStar; totalNumberOfStar > 0; totalNumberOfStar--) {
-                        var spanStar = document.createElement('span');
-                        spanStar.classList.add("unchecked");
-                        spanStar.classList.add("fa");
-                        spanStar.classList.add("fa-star");
-                        span.appendChild(spanStar);
-                    }
-                }
-              </script>
-            </div>
-            <button class="btn btn-info btn-xs">Learn More</button>
+            <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a>
+            @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->role=='teacher')
+            
+    <button class="btn btn-primary btn-xs">Edit</button>
+    <button class="btn btn-primary btn-xs">Delete</button>
+@endif
             <h3>{{$course->name}}</h3>
             <p></p>
             <div class="icons">
@@ -82,32 +55,6 @@
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
             <img src="{{ asset('images/') }}/{{$course->image}}" alt="" >
-            <div id="div{{$course->id}}">
-              <script>
-                star()
-
-                function star() {
-                    var numberOfStar = {{$course->star}};
-                                  
-                    var totalNumberOfStar = 5 - numberOfStar;
-                    var span = document.getElementById("div{{$course->id}}");
-                    for (numberOfStar; numberOfStar > 0; numberOfStar--) {
-                        var spanStar = document.createElement('span');
-                        spanStar.classList.add("checked");
-                        spanStar.classList.add("fa");
-                        spanStar.classList.add("fa-star");
-                        span.appendChild(spanStar);
-                    }
-                    for (totalNumberOfStar; totalNumberOfStar > 0; totalNumberOfStar--) {
-                        var spanStar = document.createElement('span');
-                        spanStar.classList.add("unchecked");
-                        spanStar.classList.add("fa");
-                        spanStar.classList.add("fa-star");
-                        span.appendChild(spanStar);
-                    }
-                }
-              </script>
-            </div>
             <button class="btn btn-info btn-xs">Learn More</button>
             <h3>{{$course->name}}</h3>
             <p></p>
@@ -133,32 +80,6 @@
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
             <img src="{{ asset('images/') }}/{{$course->image}}" alt="" >
-            <div id="div{{$course->id}}">
-              <script>
-                star()
-
-                function star() {
-                    var numberOfStar = {{$course->star}};
-                                  
-                    var totalNumberOfStar = 5 - numberOfStar;
-                    var span = document.getElementById("div{{$course->id}}");
-                    for (numberOfStar; numberOfStar > 0; numberOfStar--) {
-                        var spanStar = document.createElement('span');
-                        spanStar.classList.add("checked");
-                        spanStar.classList.add("fa");
-                        spanStar.classList.add("fa-star");
-                        span.appendChild(spanStar);
-                    }
-                    for (totalNumberOfStar; totalNumberOfStar > 0; totalNumberOfStar--) {
-                        var spanStar = document.createElement('span');
-                        spanStar.classList.add("unchecked");
-                        spanStar.classList.add("fa");
-                        spanStar.classList.add("fa-star");
-                        span.appendChild(spanStar);
-                    }
-                }
-              </script>
-            </div>
             <button class="btn btn-info btn-xs">Learn More</button>
             <h3>{{$course->name}}</h3>
             <p></p>
@@ -173,6 +94,9 @@
 @endif
 @endforeach
 </section>
+@if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->role=='teacher')
+
+@endif
 </div>
 
 

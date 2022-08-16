@@ -18,11 +18,12 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->string('amount');
             $table->string('image');
-            $table->integer('star');
             $table->integer('time');
             $table->integer('month');
             $table->integer('module');
             $table->string('CategoryID');
+            $table->string('teacher');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
