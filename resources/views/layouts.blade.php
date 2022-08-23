@@ -15,9 +15,9 @@
 
 </head>
 <body>
-@if(Session::has('Success'))
+@if(Session::has('success'))
       <div class="alert alert-success" role="alert">
-        {{ Session::get('Success')}}
+        {{ Session::get('success')}}
       </div>
     @endif
 <div class="container">
@@ -30,12 +30,18 @@
     <nav class="navbar">
         <a href="{{ asset('/') }}">home</a>
         <a href="{{ asset('viewCourse') }}">course</a>
-        <a href="teacher.html">teacher</a>
+        <a href="{{ asset('viewTeacher') }}">teacher</a>
         <a href= "{{ asset('event') }}">event</a>
         <!--<a href="price.html">price</a>-->
         <a href="{{ asset('viewComment') }}">review</a>
         <a href="contact.html">contact</a>
-	<a href="{{ asset('login') }}">login</a>
+        
+        @auth
+            <a href="{{route('profile',['id'=>Auth::user()->id])}}"><img src="{{ asset('profileImage/') }}/{{Auth::user()->profileImage}}" alt="" width="30px" height="30px" class="rounded" id ="profileImage"></a>
+        @endauth
+            @guest
+            <a href="login">Login</a>
+            @endguest
     </nav>
 
 </header>
@@ -57,14 +63,19 @@ users learn more easily.</p>
 
         <div class="box">
             <h3>quick links</h3>
-            <a href="index.html">home</a>
+            <a href="{{ asset('/') }}">home</a>
             <a href="{{ asset('viewCourse') }}">course</a>
-            <a href="teacher.html">teacher</a>
-            <a href="{{ asset('event') }}">event</a>
+            <a href="{{ asset('viewCourse') }}">teacher</a>
+            <a href= "{{ asset('event') }}">event</a>
             <!--<a href="price.html">price</a>-->
-            <a href="review.html">review</a>
+            <a href="{{ asset('viewComment') }}">review</a>
             <a href="contact.html">contact</a>
-            <a href="login.html">login</a>
+            @auth
+            <a href="{{route('profile',['id'=>Auth::user()->id])}}">{{ asset('Auth::user()->id') }}</a>
+            @endauth
+            @guest
+            <a href="login">Login</a>
+            @endguest
         </div>
 
         <div class="box">

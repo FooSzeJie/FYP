@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Course;
 use App\Models\Category;
+use App\Models\User;
 use Session;
 use Auth;
 
@@ -52,7 +53,11 @@ class CourseController extends Controller
 
     public function edit($id){
         $courses=Course::all()->where('id',$id);
-        Return view('viewCourse')->with('courses',$courses)->with('CategoryID',Category::all());
+        Return view('editCourse')
+        ->with('courses',$courses)
+        ->with('CategoryID',Category::all())
+        ->with('teachers', User::all()->where('role','=','teacher'));
+        
     } 
 
     public function update(){
@@ -68,13 +73,23 @@ class CourseController extends Controller
         
         $courses->name=$r->courseName;
         $courses->amount=$r->amount;
-        $courses->star=$r->star;
         $courses->time=$r->courseTime;
         $courses->month=$r->courseMonth;
         $courses->module=$r->courseModule;
         $courses->CategoryID=$r->CategoryID;
+        $courses->description=$r->description;
+        $courses->teacher=$r->teacher;
         $courses->save();
 
+        Session::flash('success','Course Was update Successfully');
+        Return redirect()->route('viewCourse');
+    }
+
+    public function delete($id)
+    {
+        $deleteCourse = Course::find($id);
+        $deleteCourse -> delete();
+        Session:: flash('success',"Course was Delete Successfully!");
         Return redirect()->route('viewCourse');
     }
 
@@ -92,28 +107,5 @@ class CourseController extends Controller
         $courses=Course::all()->where('id',$id);
         Return view('editEnrollClass')->with('courses',$courses);
     } 
-
-    public function updateDescription(){
-        $r=request();
-        $courses=Course::find($r->courseID);
-        
-        if($r->file('courseImage')!=''){
-            $image=$r->file('courseImage');        
-            $image->move('images',$image->getClientOriginalName());                   
-            $imageName=$image->getClientOriginalName(); 
-            $courses->image=$imageName;
-            }  
-            
-        $courses->name=$r->courseName;
-        $courses->amount=$r->amount;
-        $courses->time=$r->courseTime;
-        $courses->month=$r->courseMonth;
-        $courses->module=$r->courseModule;
-        $courses->CategoryID=$r->CategoryID;
-        $courses->description=$r->description;
-        $courses->save();
-
-        Return redirect()->route('EnrollClass');
-    }
 
 }

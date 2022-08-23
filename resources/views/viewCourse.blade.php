@@ -3,7 +3,7 @@
 <head>
     <title>Course</title>
     <style>
-      img{
+      .image{
         display: flex; 
         max-width:100%;
         width:100px;  
@@ -24,12 +24,12 @@
   <div class="col-sm-auto">
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
-            <img src="{{ asset('images/') }}/{{$course->image}}" alt="">
+            <img src="{{ asset('images/') }}/{{$course->image}}" alt="image" class="image">
             <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a>
             @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->role=='teacher')
             
-    <button class="btn btn-primary btn-xs">Edit</button>
-    <button class="btn btn-primary btn-xs">Delete</button>
+    <a href="{{ route('editCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Edit</a>
+    <a href="{{ route('deleteCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Delete</a>
 @endif
             <h3>{{$course->name}}</h3>
             <p></p>
@@ -43,6 +43,8 @@
 </div>
 @endif
 @endforeach
+
+
 </section>
 
 
@@ -54,7 +56,7 @@
   <div class="col-sm-auto">
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
-            <img src="{{ asset('images/') }}/{{$course->image}}" alt="" >
+            <img src="{{ asset('images/') }}/{{$course->image}}" alt="" class="image">
             <button class="btn btn-info btn-xs">Learn More</button>
             <h3>{{$course->name}}</h3>
             <p></p>
@@ -70,7 +72,6 @@
 @endforeach
 </section>
 
-
 <h1 class="heading"> advance courses </h1>
 <section class="course">
 @foreach($courses as $course)
@@ -79,7 +80,7 @@
   <div class="col-sm-auto">
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
-            <img src="{{ asset('images/') }}/{{$course->image}}" alt="" >
+            <img src="{{ asset('images/') }}/{{$course->image}}" alt="" class="image">
             <button class="btn btn-info btn-xs">Learn More</button>
             <h3>{{$course->name}}</h3>
             <p></p>

@@ -6,25 +6,29 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <br><br>
-            <h1>Show Course</h1>
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
                             <td>ID</td>
-                            <td>Image</td>
                             <td>Name</td>
+                            <td>Hrdf File</td>
+                            <td>status</td>
                             <td>Action</td>
                         </tr>
                     </thead>
                     <tbody class="table-light">
-                        @foreach($courses as $course)
+                        @foreach($hrdfs as $hrdf)
                         <tr>
-                            <td>{{$course->id}}</td> 
-                            <td><img src="{{ asset('images/') }}/{{$course->image}}" alt="" width="100" class="img-fluid"></td>
-                            <td>{{$course->name}}</td>
+                            <td>{{$hrdf->id}}</td> 
+                            <td>{{$hrdf->userName}}</td>
+                            <td>{{$hrdf->hrdfForm}}</td>
+                            <td>{{$hrdf->status}}</td>
                             <td>
-                                    <a href="{{ route('editCourse',['id'=>$course->id]) }}" class="btn btn-xs-danger">edit</a>
-                                    <a href="#" class="btn btn-xs-danger">delete</a>
+                                @if (Auth::check() && Auth::user()->email === "abc@gmail.com")
+                                    <a href="{{ route('editHrdf',['id' =>$hrdf->id])}}" class="btn btn-xs-danger">Approve</a>
+                                    <a href="{{ route('rejectHrdf',['id' =>$hrdf->id])}}" class="btn btn-xs-danger">Reject</a>
+                                @endif
+                                <a href="{{ asset('files/') }}/{{$hrdf->hrdfForm}}" class="btn btn-xs-danger">Open</a>
                             </td>
                         </tr>
                         @endforeach
@@ -32,6 +36,7 @@
                 </table>
             <br><br>
             <div class="container">
+
 </div>
         </div>
         <div class="col-sm-1"></div>

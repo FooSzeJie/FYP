@@ -59,10 +59,6 @@ class RegisterController extends Controller
             'profileImage'=>['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role'=>['required','string','max:255'],
-            'salary'=>['required'],
-            'education_level'=>['required','string','max:255'],
-
         ]);
     }
 
@@ -85,13 +81,7 @@ class RegisterController extends Controller
             'profileImage' => $profileImage_url,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role'=>$data['role'],
-            'salary'=>$data['salary'],
-            'education_level'=>$data['education_level'],
         ]);
-
-        event(new Registered($user));
-        auth()->login($user);
 
         return redirect('/')->with('success', "Account successfully registered.");
     }

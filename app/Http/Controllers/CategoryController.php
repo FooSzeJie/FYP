@@ -17,6 +17,11 @@ class CategoryController extends Controller
             'name'=>$r->categoryName,
         ]);
 
-        Return redirect()->route('viewCategory');
+        Return redirect()->route('showCategory');
+    }
+
+    public function show(){
+        $category=Category::all();
+        return view('showCategory')->with('categories',$category);
     }
 }

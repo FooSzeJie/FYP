@@ -26,17 +26,21 @@ class AdminController extends Controller
         }
     }
 
-    public function edit($id){
-        $users = User::all()->where('id',$id);
-        return view('editRole')->with('users',$users);
+    public function editTeacher($id) {
+        $hrdf = User::find($id);
+        
+        $hrdf->role = 'teacher';
+        $hrdf->save();
+
+        Return redirect()->route('viewUser');
     }
 
-    public function update(){
-        $r=request();
-        $users=User::find($r->userID);
-        $users->role=$r->role;
-        $users->save();
+    public function editUser($id) {
+        $hrdf = User::find($id);
+        
+        $hrdf->role = 'user';
+        $hrdf->save();
 
-        return redirect()->route('viewUser');
+        Return redirect()->route('viewUser');
     }
 }

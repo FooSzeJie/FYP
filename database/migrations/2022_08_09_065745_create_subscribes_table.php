@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHrdfsTable extends Migration
+class CreateSubscribesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateHrdfsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hrdfs', function (Blueprint $table) {
+        Schema::create('subscribes', function (Blueprint $table) {
             $table->id();
-            $table->string('hrdfForm');
-            $table->string('userID')->unique();
-            $table->string('status')->default('pending');
+            $table->string('name');
+            $table->integer('date');
+            $table->integer('cost');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateHrdfsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hrdfs');
+        Schema::dropIfExists('subscribes');
     }
 }

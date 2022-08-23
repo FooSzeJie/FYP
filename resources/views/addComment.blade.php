@@ -1,5 +1,12 @@
 @extends('layouts2')
 @section('content2')
+<head>
+    <style>
+        label{
+            color:white;
+        }
+    </style>
+</head>
 
 <div class="container">
     <div class="row">

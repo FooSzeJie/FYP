@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHrdfsTable extends Migration
+class CreateMyOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateHrdfsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hrdfs', function (Blueprint $table) {
+        Schema::create('my_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('hrdfForm');
-            $table->string('userID')->unique();
-            $table->string('status')->default('pending');
+            $table->integer('amount');
+            $table->string('userID');
+            $table->string('orderID');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateHrdfsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hrdfs');
+        Schema::dropIfExists('my_orders');
     }
 }

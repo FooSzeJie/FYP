@@ -1,35 +1,39 @@
 @extends('layouts')
 @section('content')
 
-<style>
-    .course{
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
-</style>
 <div class="container">
+    
     <div class="row">
-        <div class="course">
-            <table class="">
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>Name</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($courses as $course)
-                    <tr>
-                        <td>{{$course->id}}</td>
-                        <td>{{$course->name}}</td>
-                        <td><a href="{{ route('editCourse',['id'=>$course->id]) }}" class="btn">Edit</a></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <br><br>
+            <h1>Show Category</h1>
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <td>ID</td>
+                            <td>Name</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody class="table-light">
+                        @foreach($categories as $category)
+                        <tr>
+                            <td>{{$category->id}}</td> 
+                            <td>{{$category->name}}</td>
+                            <td>
+                                    <a href="#" class="btn btn-xs-danger">edit</a>
+                                    <a href="#" class="btn btn-xs-danger">delete</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            <br><br>
+            <div class="container">
+</div>
         </div>
+        <div class="col-sm-1"></div>
     </div>
 </div>
 

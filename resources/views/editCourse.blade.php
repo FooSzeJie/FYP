@@ -2,9 +2,9 @@
 @section('content')
 
 <div class="container">
-            <br>
-            <h1>Edit Course</h1>
-            <form action="{{ route('updateCourse')}}" method="POST" enctype="multipart/form-data">
+    <br>
+    <h1>Edit Class</h1>
+    <form action="{{ route('updateCourse')}}" method="POST" enctype="multipart/form-data">
             @CSRF
             @foreach($courses as $course)
             <div class="form-group">
@@ -12,13 +12,10 @@
                 <input type="text" class="form-control" id="courseName" name="courseName" value="{{$course->name}}"> 
                 <input type="hidden" name="courseID" id="courseID" value="{{$course->id}}"> 
             </div>
+
             <div class="form-group">
                 <label for="amount">Semester Length</label>
                 <input type="text" id="amount" name="amount" class="form-control" value="{{$course->amount}}">
-            </div>
-            <div class="form-group">
-                <label for="star">Star Rating</label>
-                <input type="number" min="1" max="5" class="form-control" id="star" name="star" value="{{$course->star}}">
             </div>
             <div class="form-group">
                 <label for="courseTime">Time Taken</label>
@@ -34,22 +31,36 @@
             </div>
             <div class="form-group">
                     <label for="courseImage">Course Image</label>
-                    <img src="{{asset('images')}}/{{$course->image}}" alt="" class="img-fluid" width="100">
+                    <img src="{{ asset('images')}}/{{$course->image}}" alt="" class="img-fluid" width="100">
                     <input type="file" class="form-control" id="courseImage" name="courseImage" value="">
             </div>
+
+            <div class="form-group">
+                    <label for="description">Description</label>
+                    <br>
+                    <textarea id="description" name="description" class="form-control" rows="10" cols="75" value="{{$course->description}}"></textarea>
+                </div>
+
             <div class="form-group">
                     <label for="categoryID">Course Category</label>
                     <select name="CategoryID" id="CategoryID" class="form-control">
-                        @foreach ($categoryID as $category)
+                        @foreach ($CategoryID as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
-                </div>
+            </div>
+            <div class="form-group">
+                <label for="teacher">Teacher</label>
+                <select name="teacher" id="teacher" class="form-control">
+                    @foreach($teachers as $teacher)
+                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            @endforeach
             <button type="submit" class="btn btn-primary">Update</button>
         </div>
         </form>
 </div>
-
-
 
 @endsection

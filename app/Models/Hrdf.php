@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hrdf extends Model
 {
     use HasFactory;
-    protected $fillable=['id','userID','status'];
+    protected $fillable=['id','hrdfForm', 'userID','status'];
 
     public function Hrdf(){
         return $this->belongsTo('App\Models\User');

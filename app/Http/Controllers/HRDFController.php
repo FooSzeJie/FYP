@@ -5,20 +5,54 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PDF;
 use DB;
+use App\Models\Hrdf;
 use App\Models\User;
 use Auth;
 
 class HRDFController extends Controller
 {
-    public function pdfReport()
-    {
-        $orders = DB::table('my_orders')
-        ->where('ID','=',Auth::id())
-        ->get();
+    public function __construct(){
+        $this->middleware('auth');
+    }
 
+    public function uploadHRDF(){
         
-        $pdf = PDF::loadView('myPDF', compact('hrdf'));
+        $r=request();
+        $hrdf=$r->file('HRDFForm');        
+        $hrdf->move('files',$hrdf->getClientOriginalName());               
+        $hrdfForm=$hrdf->getClientOriginalName(); 
+        $addCourse=Hrdf::create([
+            'userID' => Auth::id(),
+            'hrdfForm'=>$hrdfForm,
+            'status' => $r-> status,
+        ]);
+            Return redirect()->route('uploadHrdf');
+    }
 
-        return $pdf->download('Hrdf Form.pdf');
+    public function showHRDF(){
+
+        $hrdf = DB::table('hrdfs')
+        ->leftjoin('users', 'users.id', '=', 'hrdfs.userID')
+        ->select('hrdfs.*', 'users.name as userName')
+        ->get();
+        return view('showHRDF')->with('hrdfs',$hrdf);
+    }       
+
+    public function updateHRDF($id) {
+        $hrdf = Hrdf::find($id);
+        
+        $hrdf->status = 'approve';
+        $hrdf->save();
+
+        Return redirect()->route('showHrdf');
+    }
+
+    public function RejectHRDF($id) {
+        $hrdf = Hrdf::find($id);
+        
+        $hrdf->status = 'reject';
+        $hrdf->save();
+
+        Return redirect()->route('showHrdf');
     }
 }

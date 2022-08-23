@@ -6,6 +6,7 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <br><br>
+            <h1>Show User Role</h1>
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
@@ -25,9 +26,9 @@
                             <td>{{$user->role}}</td>
                             <td>
                                 @if (Auth::check() && Auth::user()->email === "abc@gmail.com")
-                                    <a href="{{route('editRole',['id'=>$user->id])}}" class="btn btn-xs-danger">Edit Role</a>
+                                    <a href="{{ route('editTeacher',['id' =>$user->id])}}" class="btn btn-xs-danger">Teacher</a>
+                                    <a href="{{ route('editUser',['id' =>$user->id])}}" class="btn btn-xs-danger">User</a>
                                 @endif
-                                <a href="{{ asset('files/hrdfForm.pdf') }}" class="btn btn-xs-danger">Open</a>
                             </td>
                         </tr>
                         @endforeach
@@ -35,7 +36,6 @@
                 </table>
             <br><br>
             <div class="container">
-
 </div>
         </div>
         <div class="col-sm-1"></div>

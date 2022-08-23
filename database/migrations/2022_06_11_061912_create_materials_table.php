@@ -18,6 +18,7 @@ class CreateMaterialsTable extends Migration
             $table->string('name');
             $table->string('video');
             $table->text('description');
+            $table->string('materials');
             $table->string('courseID');
             $table->timestamps();
         });
