@@ -21,4 +21,8 @@ class Course extends Model
         return $this->hasMany('App\Models\Comment');
     }
 
+    public function ToContactUs(){
+        return $this->hasMany('App\Models\ContactUs');
+    }
+
 }

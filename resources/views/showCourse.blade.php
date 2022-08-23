@@ -24,7 +24,7 @@
                             <td>{{$course->name}}</td>
                             <td>
                                     <a href="{{ route('editCourse',['id'=>$course->id]) }}" class="btn btn-xs-danger">edit</a>
-                                    <a href="#" class="btn btn-xs-danger">delete</a>
+                                    <a href="{{ route('deleteCourse',['id' =>$course->id])}}" class="btn btn-xs-danger">delete</a>
                             </td>
                         </tr>
                         @endforeach

@@ -172,7 +172,8 @@ startGame()
         @CSRF
         @foreach($events as $event)
         <div class="form-group">
-            <input type="hidden" name="id" id="id" value="{{$event->id}}">
+            <input type="hidden" name="playerID" id="playerID" value="{{$event->id}}">
+            <input type="hidden" name="playerName" id="playerName" value="{{$event->name}}">
             <input type="hidden" name="score" id="score" value="{{$event->score}}">
         </div>       
 

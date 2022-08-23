@@ -32,7 +32,7 @@
                 font-size: 2.5em;
             }
 
-            .playerName, .playerScore{
+            .playerNames, .playerScore{
                 font-size: 2em;
                 text-align: center;
                 color: white;
@@ -57,7 +57,7 @@
                         <tbody>
                             @foreach($events as $event)
                             <tr>
-                                <td class="playerName">{{ $event->name }}</td>
+                                <td class="playerNames">{{ $event->name }}</td>
                                 <td class="playerScore">{{ $event->score }}</td>
                             </tr>
                             @endforeach

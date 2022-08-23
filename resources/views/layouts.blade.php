@@ -34,7 +34,7 @@
         <a href= "{{ asset('event') }}">event</a>
         <!--<a href="price.html">price</a>-->
         <a href="{{ asset('viewComment') }}">review</a>
-        <a href="contact.html">contact</a>
+        <a href="{{ asset('addContactUs') }}">contact</a>
         
         @auth
             <a href="{{route('profile',['id'=>Auth::user()->id])}}"><img src="{{ asset('profileImage/') }}/{{Auth::user()->profileImage}}" alt="" width="30px" height="30px" class="rounded" id ="profileImage"></a>

@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function ToComment(){
         return $this->hasMany('App\Models\Comment');
     }
+
+    public function ToContactUs(){
+        return $this->hasMany('App\Models\ContactUs');
+    }
 }

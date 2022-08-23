@@ -21,7 +21,19 @@ class EventController extends Controller
             'score'=>$r->score
         ]);
 
-        Return view('EMathGame');
+        $find = Event::all()->where('id');
+        Return view('EMathGame') -> with('events', $find);
+
+        //Return view('EMathGame');
+        //return redirect('EMathGame/'.$id);
+    }
+
+    public function store() {
+
+        $input = Event::all();
+        $id = Event::create($input)->id;
+    
+        return redirect('company/'.$id);
     }
 
     public function editScore($id)

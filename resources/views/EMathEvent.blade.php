@@ -15,7 +15,8 @@
                     @CSRF
                     <div class="form-group">
                         <input type="text" class="form-control" id="playerName" name="playerName" placeholder="Player Name" style="font-size: 2.0rem; padding: 2rem 0; width: 25rem; text-align: center; margin-bottom: 1rem;">            
-                        <input type="hidden" class="form-control" id="score" name="score" value = 0>            
+                        <input type="hidden" class="form-control" id="score" name="score" value = 0>    
+                                
                     </div>
                     <button type="submit" class="btn btn-primary">Play </button>
                 </form>

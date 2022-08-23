@@ -2,29 +2,27 @@
 @section('content')
 
 <div class="container">
-    
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <br><br>
-            <h1>Show Category</h1>
+            <h1>Contact Us</h1>
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
                             <td>ID</td>
                             <td>Name</td>
-                            <td>Action</td>
+                            <td>Email</td>
+                            <td>Messsage</td>
                         </tr>
                     </thead>
                     <tbody class="table-light">
-                        @foreach($categories as $category)
+                        @foreach($contacts as $contact)
                         <tr>
-                            <td>{{$category->id}}</td> 
-                            <td>{{$category->name}}</td>
-                            <td>
-                                    <a href="{{ route('editCategory',['id'=>$category->id]) }}" class="btn btn-xs-danger">edit</a>
-                                    <a href="{{ route('deleteCategory',['id' =>$category->id])}}" class="btn btn-xs-danger">delete</a>
-                            </td>
+                            <td>{{$contact->id}}</td> 
+                            <td>{{$contact->userName}}</td>
+                            <td>{{$contact->userEmail}}</td>
+                            <td>{{$contact->message}}</td>
                         </tr>
                         @endforeach
                     </tbody>

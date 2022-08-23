@@ -25,7 +25,14 @@ Route::get('/addCategory',function(){
 
 Route::post('/addCategory/store',[App\Http\Controllers\CategoryController::class,'add'])->name('addCategory');
 
-Route::get('/showCategory',[App\Http\Controllers\CategoryController::class,'show'])->name('showCourse');
+Route::get('/showCategory',[App\Http\Controllers\CategoryController::class,'show'])->name('showCategory');
+
+Route::get('editCategory/{id}',[App\Http\Controllers\CategoryController::class,'edit'])->name('editCategory');
+
+Route::post('/updateCategory',[App\Http\Controllers\CategoryController::class,'update'])->name('updateCategory');
+
+Route::get('/deleteCategory/{id}', [App\Http\Controllers\CategoryController::class,'delete'])->name('deleteCategory');
+
 
 //Course Page
 Route::get('/addCourse',function(){
@@ -142,13 +149,16 @@ Route::post('/EMathEvent/store',[App\Http\Controllers\EventController::class,'ad
 Route::get('/EMathScore',[App\Http\Controllers\EventController::class,'showScore'])->name('EMathScore');
 
 Route::post('/updateEMathGame',[App\Http\Controllers\EventController::class,'updateScore'])->name('updateEMathGame');
-
+/*
 Route::get('/EMathGame',function(){
     return view('EMathGame');
 });
-
+*/
 //Route::get('/EMathGame/{id}',[App\Http\Controllers\EventController::class, 'editScore'])
 //->name('EMathGame');
+
+Route::post('/EMathGame',[App\Http\Controllers\EventController::class, 'updateScore'])
+->name('EMathGame');
 
 //Comment Page
 Route::get('/addComment',function(){
@@ -160,7 +170,7 @@ Route::post('/addComment/store',[App\Http\Controllers\CommentController::class,'
 Route::get('/viewComment',[App\Http\Controllers\CommentController::class,'viewComment'])
 ->name('viewComment');
 
-Route::post('/addComment/store',[App\Http\Controllers\CommentController::class,'addComment'])->name('addComment');
+//Route::post('/addComment/store',[App\Http\Controllers\CommentController::class,'addComment'])->name('addComment');
 
 Route::get('/Discussion',[App\Http\Controllers\CommentController::class,'Discussion'])
 ->name('Discussion');
@@ -177,6 +187,15 @@ Route::get('/showHrdf',[App\Http\Controllers\HrdfController::class,'showHRDF'])-
 Route::get('editHrdf/{id}',[App\Http\Controllers\HrdfController::class,'updateHRDF'])->name('editHrdf');
 
 Route::get('rejectHrdf/{id}',[App\Http\Controllers\HrdfController::class,'rejectHRDF'])->name('rejectHrdf');
+
+//Contact Us page
+Route::get('/addContactUs',function(){
+    return view('addContactUs',['courseID'=>DB::table('courses')->get()], ['userID'=>DB::table('users')->get()]);
+});
+
+Route::post('/addContactUs/store',[App\Http\Controllers\ContactUsController::class,'addContact'])->name('addContact');
+
+Route::get('/showContactUs',[App\Http\Controllers\ContactUsController::class,'showContact'])->name('showContactUs');
 
 //home
 Auth::routes();
