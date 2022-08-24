@@ -65,6 +65,9 @@ Route::get('viewTeacher',[App\Http\Controllers\TeacherController::class,'show'])
 //Profile Page
 Route::get('profile/{id}',[App\Http\Controllers\UserController::class,'view'])->name('profile');
 
+Route::get('editProfile/{id}',[App\Http\Controllers\UserController::class,'editProfile'])->name('editProfile');
+
+Route::post('/updateProfile',[App\Http\Controllers\UserController::class,'updateProfile'])->name('updateProfile');
 
 //course page
 Route::get('/CourseDetails/{id}',[App\Http\Controllers\CourseController::class,'detail'])->name('CourseDetails');

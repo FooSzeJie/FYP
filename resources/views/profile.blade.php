@@ -17,20 +17,20 @@
     <div class="col-sm-10">
       <h3>Profile</h3>
       @foreach($users as $user)
-          <label for="profileName">Profile Name</label>
-          <input type="text" id="profileName" name="profileName" value="{{$user->name}}" disabled>
+          <label for="profileName">Profile Name: </label>
+          <input type="text" id="profileName" name="profileName" value="{{$user->name}}" readonly>
           <br>
-          <label for="profileImage">Profile Image</label>
+          <label for="profileImage">Profile Image: </label>
           <img src="{{ asset('profileImage/') }}/{{$user->profileImage}}" alt="" class="rounded" width="70" height="70">
           <br>
-          <label for="profileAddress">Address</label>
-          <input type="text" id="profileAddress" name="profileAddress" value="{{$user->address}}" disabled>
+          <label for="profileAddress">Address: </label>
+          <input type="text" id="profileAddress" name="profileAddress" value="{{$user->address}}" readonly>
           <br>
-          <label for="age">Age</label>
-          <input type="number" id="age" name="age" value="{{$user->age}}" disabled>
+          <label for="age">Age: </label>
+          <input type="number" id="age" name="age" value="{{$user->age}}" readonly>
 
           <div id="outer">
-            <div class="inner"><a href="#" class="btn btn-xs-primary">Edit Profile</a></div>
+            <div class="inner"><a href="{{ route('editProfile',['id'=>$user->id]) }}" class="btn btn-xs-danger">Edit Profile</a></div>
             <div class="inner"><a class="btn btn-xs-primary" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
