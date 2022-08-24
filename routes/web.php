@@ -133,6 +133,12 @@ Route::get('showMaterial',[App\Http\Controllers\MaterialController::class,'showM
 
 Route::get('viewMaterial',[App\Http\Controllers\MaterialController::class,'viewMaterial'])->name('viewMaterial');
 
+Route::get('editMaterial/{id}',[App\Http\Controllers\MaterialController::class,'editMaterial'])->name('editMaterial');
+
+Route::post('/updateMaterial',[App\Http\Controllers\MaterialController::class,'updateMaterial'])->name('updateMaterial');
+
+Route::get('/deleteMaterial/{id}', [App\Http\Controllers\MaterialController::class,'deleteMaterial'])->name('deleteMaterial');
+
 //Event Page
 Route::get('/event', function () {
     return view('viewEvent');

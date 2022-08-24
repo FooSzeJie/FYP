@@ -59,8 +59,8 @@
                             <td>{{$material->name}}</td>
                             <td>{{ $material->materials }}</td>
                             <td>
-                                <a href="#" class="btn btn-xs-danger">Edit</a>
-                                <a href="#" class="btn btn-xs-danger">delete</a>
+                                <a href="{{ route('editMaterial',['id'=>$material->id]) }}" class="btn btn-xs-danger">edit</a>
+                                <a href="{{ route('deleteMaterial',['id' =>$material->id])}}" class="btn btn-xs-danger">delete</a>
                             </td>
                         </tr>
                         @endforeach
