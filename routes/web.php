@@ -59,59 +59,12 @@ Route::get('editTeacher/{id}',[App\Http\Controllers\AdminController::class,'edit
 
 Route::get('editUser/{id}',[App\Http\Controllers\AdminController::class,'editUser'])->name('editUser');
 
-//Route::post('updateRole',[App\Http\Controllers\AdminController::class,'update'])->name('updateRole');
-
-//Payment Page
-Route::post('/paymentPage', [App\Http\Controllers\PaymentController::class, 'passCost'])->name('paymentPage');
-
-Route::post('/checkout', [App\Http\Controllers\PaymentController::class, 'paymentPost'])->name('payment.post');
-
-//Subscribe page
-Route::get('/addSubscribe',function(){
-    return view('addSubscribe');
-});
-
-Route::post('/addSubscribe/store',[App\Http\Controllers\SubscribeController::class,'add'])->name('addSubscribe');
-
-Route::get('showSubscribe',[App\Http\Controllers\SubscribeController::class,'show'])->name('showSubscribe');
-
 //Teacher Page
 Route::get('viewTeacher',[App\Http\Controllers\TeacherController::class,'show'])->name('viewTeacher');
 
 //Profile Page
 Route::get('profile/{id}',[App\Http\Controllers\UserController::class,'view'])->name('profile');
 
-
-//Confirm Role
-Route::get('/admin', function(){
-    return view('/welcome')->with('message','Welcome admin');
-})->middleware('admin');
-
-Route::get('/user', function(){
-    return view('/welcome')->with('message','Welcome user');
-})->middleware('user');
-
-Route::get('/teacher', function(){
-    echo "Hello Teacher";
-})->middleware('teacher');
-
-//Verify Email
-Route::group(['middleware' => ['auth']], function() {
-    Route::get('/email/verify', 'VerificationController@show')->name('verification.notice');
-    Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify')->middleware(['signed']);
-    Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
-});
-
-//only authenticated can access this group
-Route::group(['middleware' => ['auth']], function() {
-    //only verified account can access with this group
-    Route::group(['middleware' => ['verified']], function() {
-            /**
-             * Dashboard Routes
-             */
-            Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
-    });
-});
 
 //course page
 Route::get('/CourseDetails/{id}',[App\Http\Controllers\CourseController::class,'detail'])->name('CourseDetails');
@@ -176,8 +129,6 @@ Route::post('/addComment/store',[App\Http\Controllers\CommentController::class,'
 Route::get('/viewComment',[App\Http\Controllers\CommentController::class,'viewComment'])
 ->name('viewComment');
 
-//Route::post('/addComment/store',[App\Http\Controllers\CommentController::class,'addComment'])->name('addComment');
-
 Route::get('/Discussion',[App\Http\Controllers\CommentController::class,'Discussion'])
 ->name('Discussion');
 
@@ -203,27 +154,20 @@ Route::post('/addContactUs/store',[App\Http\Controllers\ContactUsController::cla
 
 Route::get('/showContactUs',[App\Http\Controllers\ContactUsController::class,'showContact'])->name('showContactUs');
 
+
+//Payment
+Route::get('plans/create',[App\Http\Controllers\SubscriptionController::class,'showPlanForm'])->name('plans.create');
+
+Route::post('plans/store',[App\Http\Controllers\SubscriptionController::class,'savePlan'])->name('plans.store');
+
+
+Route::get('plans',[App\Http\Controllers\SubscriptionController::class,'allPlans'])->name('plans.all');
+
+Route::get('plans/checkout/{planId}',[App\Http\Controllers\SubscriptionController::class,'checkout'])->name('plans.checkout');
+
+Route::post('plans/process',[App\Http\Controllers\SubscriptionController::class,'processPlan'])->name('plans.process');
+
 //home
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

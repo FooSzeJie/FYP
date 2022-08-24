@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subscribe extends Model
+class Plan extends Model
 {
     use HasFactory;
-    protected $fillable=['id','name','date','cost','description'];
+    protected $fillable = ['plan_id','name','billing_method','interval_count','price','currency'];
 }

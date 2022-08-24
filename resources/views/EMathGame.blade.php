@@ -110,7 +110,7 @@ getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score)
 
-        return window.location.href='{{ route('EMathScore') }}'
+        return window.location.href='{{ asset('EMathScore') }}'
     }
 
     questionCounter++

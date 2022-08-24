@@ -38,17 +38,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
-    protected function redirectTo( ) {
-        if (Auth::check() && Auth::user()->role == 'teacher') {
-            return('/teacher');
-        }
-        elseif (Auth::check() && Auth::user()->role == 'user') {
-            return('/user');
-        }
-        else {
-            return('/admin');
-        }
-        
-    }
+    
     
 }
