@@ -34,7 +34,7 @@ class CourseController extends Controller
             'CategoryID'=>$r->CategoryID,
             'description'=>$r->description,
             'image'=>$imageName,
-            'teacher'=>$r->teacher,
+            'teacher'=>Auth::user()->id,
         ]);
             Return redirect()->route('viewCourse');
     }
@@ -78,7 +78,7 @@ class CourseController extends Controller
         $courses->module=$r->courseModule;
         $courses->CategoryID=$r->CategoryID;
         $courses->description=$r->description;
-        $courses->teacher=$r->teacher;
+        $courses->teacher=Auth::user()->id;
         $courses->save();
 
         Session::flash('success','Course Was update Successfully');

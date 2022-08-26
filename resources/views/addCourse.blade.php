@@ -46,14 +46,12 @@
                         @endforeach
                     </select>
             </div>
+
             <div class="form-group">
-                <label for="teacher">Teacher</label>
-                <select name="teacher" id="teacher" class="form-control">
-                    @foreach($teachers as $teacher)
-                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
-                    @endforeach
-                </select>
+                <label for="courseName">Teacher Name: </label>
+                <label for="courseName" value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</label>
             </div>
+
             <button type="submit" class="btn btn-primary">Add New</button>
         </div>
         </form>
