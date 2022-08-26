@@ -32,6 +32,7 @@
         <a href="{{ asset('/') }}">home</a>
         <a href="{{ asset('viewCourse') }}">course</a>
         <a href="{{ asset('viewTeacher') }}">teacher</a>
+        <a href="{{ asset('plans') }}">Plan</a>
         <a href= "{{ asset('event') }}">event</a>
         <!--<a href="price.html">price</a>-->
         <a href="{{ asset('viewComment') }}">review</a>
@@ -67,6 +68,7 @@ users learn more easily.</p>
             <a href="{{ asset('/') }}">home</a>
             <a href="{{ asset('viewCourse') }}">course</a>
             <a href="{{ asset('viewCourse') }}">teacher</a>
+            <a href="{{ asset('plans') }}">Plan</a>
             <a href= "{{ asset('event') }}">event</a>
             <!--<a href="price.html">price</a>-->
             <a href="{{ asset('viewComment') }}">review</a>

@@ -64,7 +64,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a href="{{ route('viewUser')}}" class="dropdown-item">Change Role</a>
                   <a href="{{ route('showHrdf')}}" class="dropdown-item">HRDF</a>
-                  <a href="{{ route('showCourse')}}" class="dropdown-item">Show Course</a>
+                  <a href="{{ route('plans.create')}}" class="dropdown-item">Create Plans</a>
                 </div>
               </div>
             @endif
