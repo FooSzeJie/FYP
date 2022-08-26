@@ -63,7 +63,8 @@
                 <a class="dropdown-toggle, btn btn-xs-danger" id="toggleButton"  data-toggle="dropdown" aria-expanded="false">Admin Control</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a href="{{ route('viewUser')}}" class="dropdown-item">Change Role</a>
-                  <a href="{{ route('showHrdf')}}" class="dropdown-item">HRDF</a>
+                  <a href="{{ route('showHrdf')}}" class="dropdown-item">HRDF</a>                  
+                  <a href="{{ route('showContactUs')}}" class="dropdown-item">Show Contact us</a>
                   <a href="{{ route('plans.create')}}" class="dropdown-item">Create Plans</a>
                 </div>
               </div>

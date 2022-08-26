@@ -28,8 +28,6 @@
                 <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">Provided</p>
                     <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">By</p>
                             <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">E-EDU Center</p>
-
-                                <a href="{{ asset('uploadHrdf') }}" class="btn">HRDF</a>
                                 <br>
                                 <a href="{{ route('enroll.class', ['id' => $course -> id]) }}" class="btn">ENROLL</a>
                                 </div>
