@@ -53,11 +53,11 @@ class CourseController extends Controller
 
     public function edit($id){
         $courses=Course::all()->where('id',$id);
+
         Return view('editCourse')
         ->with('courses',$courses)
         ->with('CategoryID',Category::all())
         ->with('teachers', User::all()->where('role','=','teacher'));
-        
     } 
 
     public function update(){

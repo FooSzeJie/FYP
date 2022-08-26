@@ -18,6 +18,7 @@
                     </thead>
                     <tbody class="table-light">
                         @foreach($courses as $course)
+                        @if(Auth::check() && Auth::user()->id == $course->teacher)
                         <tr>
                             <td>{{$course->id}}</td> 
                             <td><img src="{{ asset('images/') }}/{{$course->image}}" alt="" width="100" class="img-fluid"></td>
@@ -27,6 +28,7 @@
                                     <a href="{{ route('deleteCourse',['id' =>$course->id])}}" class="btn btn-xs-danger">delete</a>
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

@@ -26,7 +26,7 @@
     <span class="amount">{{$course->amount}}</span>
             <img src="{{ asset('images/') }}/{{$course->image}}" alt="image" class="image">
             <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a>
-            @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->role=='teacher')
+            @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
             
     <a href="{{ route('editCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Edit</a>
     <a href="{{ route('deleteCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Delete</a>

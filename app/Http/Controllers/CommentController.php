@@ -7,6 +7,7 @@ use DB;
 use App\models\Course;
 use App\Models\Comment;
 use App\Models\User;
+use Auth;
 use Session;
 
 class CommentController extends Controller
@@ -19,7 +20,7 @@ class CommentController extends Controller
         $r=request();
 
         $addComment=Comment::create([
-            'userID'=>$r->userID,
+            'userID' => Auth::user()->id,
             'comment'=>$r->comment,
             'courseID'=>$r->courseID,
         ]);

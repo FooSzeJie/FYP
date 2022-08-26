@@ -6,10 +6,15 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Material;
 use App\Models\Course;
+use Auth;
 use Session;
 
 class MaterialController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function addMaterial(){
         $r=request();
         $video=$r->file('video');        
@@ -34,16 +39,24 @@ class MaterialController extends Controller
         $materials=Material::all();
         return view('showMaterial')->with('materialed',$materials);
     }
-
-    public function viewMaterial(){
+/*
+    public function viewMaterial1(){
         $materials=DB::table('materials')
         ->select('materials.*')
         ->get();
         return view('viewMaterial')->with('materialed',$materials);         
     }
+*/
+    public function viewMaterial($id){
+        $materials=Material::all()->where('id',$id);
+
+        Return view('viewMaterial')->with('materialed',$materials)
+        ->with('CourseID',Course::all());         
+    }
 
     public function editMaterial($id){
         $material=Material::all()->where('id',$id);
+
         Return view('editMaterial')
         ->with('material',$material)
         ->with('CourseID',Course::all());

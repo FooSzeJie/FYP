@@ -13,7 +13,7 @@
             padding-left: 20rem;
         }
 
-        .btn{
+        #btn{
             display: inline-block;
             margin-top: 1rem;
             padding:.5rem 1rem;
@@ -24,7 +24,7 @@
             font-size: 2rem;
             }
 
-        .btn:hover{
+        #btn:hover{
             color: grey;
             }
     </style>
@@ -59,8 +59,11 @@
                             <td>{{$material->name}}</td>
                             <td>{{ $material->materials }}</td>
                             <td>
-                                <a href="{{ route('editMaterial',['id'=>$material->id]) }}" class="btn btn-xs-danger">edit</a>
-                                <a href="{{ route('deleteMaterial',['id' =>$material->id])}}" class="btn btn-xs-danger">delete</a>
+                                @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->role=='teacher')
+                                <a href="{{ route('editMaterial',['id'=>$material->id]) }}" class="btn btn-xs-danger" id="btn">Edit</a>
+                                <a href="{{ route('deleteMaterial',['id' =>$material->id])}}" class="btn btn-xs-danger" id="btn">Delete</a>
+                                @endif
+                                 <a href="{{ route('viewMaterial',['id' =>$material->id])}}" class="btn btn-xs-danger" id="btn">Enter</a>
                             </td>
                         </tr>
                         @endforeach

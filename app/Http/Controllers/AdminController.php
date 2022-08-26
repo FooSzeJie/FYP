@@ -26,6 +26,15 @@ class AdminController extends Controller
         }
     }
 
+    public function editAdmin($id) {
+        $hrdf = User::find($id);
+        
+        $hrdf->role = 'admin';
+        $hrdf->save();
+
+        Return redirect()->route('viewUser');
+    }
+
     public function editTeacher($id) {
         $hrdf = User::find($id);
         

@@ -185,28 +185,16 @@ text{
      <text style="left: 20px"><strong>E.EDU.Center</strong></text>
      
      <div class="menu">
-       <div class="item"><a href="{{ asset('/')}}"><i class="fas fa-desktop"></i>Dashboard</a></div>
 
-       <div class="item">
-         <a class="sub-btn"><i class="fas fa-table"></i>Material<i class="fas fa-angle-right dropdown"></i></a>
-        
-         <div class="sub-menu">
-           <a href="#" class="sub-item">Week 01</a>
-           <a href="#" class="sub-item">Week 02</a>
-           <a href="#" class="sub-item">Week 03</a>
-            <a href="#" class="sub-item">Week 04</a>
-            <a href="#" class="sub-item">Week 05</a>
-            <a href="#" class="sub-item">Week 06</a>
-            <a href="#" class="sub-item">Week 07</a>
-         </div>
-       </div>
+
+       <div class="item"><a href="{{ asset('showMaterial')}}"><i class="fas fa-desktop"></i>Material</a></div>
 
        <div class="item">
          <a class="sub-btn"><i class="fas fa-table"></i>Discussion<i class="fas fa-angle-right dropdown"></i></a>
         
          <div class="sub-menu">
            <a href="{{ asset('addComment') }}" class="sub-item">Add Comment</a>
-           <a href="#" class="sub-item">Comment</a>
+           <a href="{{ asset('Discussion') }}" class="sub-item">Comment</a>
            
          </div>
        </div>
@@ -214,14 +202,12 @@ text{
        @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->role=='teacher')
        <div class="item">
          <a class="sub-btn"><i class="fas fa-cogs"></i>Settings<i class="fas fa-angle-right dropdown"></i></a>
-         <div class="sub-menu">
-          <a href="{{ asset('addMaterial') }}" class="sub-item">Add</a>
-          <a href="#" class="sub-item">Edit</a>
+         <div class="sub-menu">        
+          <a href="{{ asset('addMaterial') }}" class="sub-item">Add Material</a>
+          <a href="{{ asset('showMaterial') }}" class="sub-item">Show Material</a>
          </div>
        </div>
       @endif
-
-       <div class="item"><a href="#"><i class="fas fa-info-circle"></i>About</a></div>
 
         <div class="item"><a href="{{ asset('/') }}"><i class="fas fa-log-out"></i>Exit</a></div>
      </div>

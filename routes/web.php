@@ -55,6 +55,8 @@ Route::get('/deleteCourse/{id}', [App\Http\Controllers\CourseController::class,'
 //-------------------------------------------Edit User Page-----------------------------------------------------------//
 Route::get('viewUser',[App\Http\Controllers\AdminController::class,'view'])->name('viewUser');
 
+Route::get('editAdmin/{id}',[App\Http\Controllers\AdminController::class,'editAdmin'])->name('editAdmin');
+
 Route::get('editTeacher/{id}',[App\Http\Controllers\AdminController::class,'editTeacher'])->name('editTeacher');
 
 Route::get('editUser/{id}',[App\Http\Controllers\AdminController::class,'editUser'])->name('editUser');
@@ -87,7 +89,8 @@ Route::post('/addMaterial/store',[App\Http\Controllers\MaterialController::class
 
 Route::get('showMaterial',[App\Http\Controllers\MaterialController::class,'showMaterial'])->name('showMaterial');
 
-Route::get('viewMaterial',[App\Http\Controllers\MaterialController::class,'viewMaterial'])->name('viewMaterial');
+//Route::get('viewMaterial',[App\Http\Controllers\MaterialController::class,'viewMaterial'])->name('viewMaterial');
+Route::get('viewMaterial/{id}',[App\Http\Controllers\MaterialController::class,'viewMaterial'])->name('viewMaterial');
 
 Route::get('editMaterial/{id}',[App\Http\Controllers\MaterialController::class,'editMaterial'])->name('editMaterial');
 
@@ -132,8 +135,7 @@ Route::post('/addComment/store',[App\Http\Controllers\CommentController::class,'
 Route::get('/viewComment',[App\Http\Controllers\CommentController::class,'viewComment'])
 ->name('viewComment');
 
-Route::get('/Discussion',[App\Http\Controllers\CommentController::class,'Discussion'])
-->name('Discussion');
+Route::get('/Discussion',[App\Http\Controllers\CommentController::class,'Discussion'])->name('Discussion');
 
 //-------------------------------------------Hrdf Page-----------------------------------------------------------//
 Route::get('/uploadHrdf',function(){

@@ -1,6 +1,6 @@
 @extends('layouts2')
 @section('content2')
-<head>
+<head></head>
 <style>
         .contentbox p, li{
             color: #fff;
@@ -10,6 +10,14 @@
 
         .contentbox h2, h3, h4{
             color: #00FFFF;
+        }
+
+        h3{
+          font-size: 3rem;
+        }
+
+        h2{
+          font-size: 4rem;
         }
     </style>
 </head>

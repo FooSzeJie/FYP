@@ -10,6 +10,34 @@
 {
     display: inline-block;
 }
+
+#toggleButton
+{
+  color: #fff;
+  background-color: #323232 ;
+  border-color: #323232;
+}
+
+#toggleButton:hover
+{
+  color: #fff;
+  background-color: #c82333;
+  border-color: #323232; 
+}
+
+#toggleButton:focus
+{
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}
+
+#toggleButton:disabled
+{
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
 </style>
 <div class="container">
   <div class="row">
@@ -30,6 +58,31 @@
           <input type="number" id="age" name="age" value="{{$user->age}}" readonly>
 
           <div id="outer">
+            @if(Auth::check() && Auth::user()->role=='admin' || Auth::user()->email === "abc@gmail.com")
+              <div class="inner">
+                <a class="dropdown-toggle, btn btn-xs-danger" id="toggleButton"  data-toggle="dropdown" aria-expanded="false">Admin Control</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a href="{{ route('viewUser')}}" class="dropdown-item">Change Role</a>
+                  <a href="{{ route('showHrdf')}}" class="dropdown-item">HRDF</a>
+                  <a href="{{ route('showCourse')}}" class="dropdown-item">Show Course</a>
+                </div>
+              </div>
+            @endif
+
+            @if(Auth::check() && Auth::user()->role=='admin' || Auth::user()->role=='teacher')
+              <div class="inner">
+                <a class="dropdown-toggle, btn btn-xs-danger" id="toggleButton"  data-toggle="dropdown" aria-expanded="false">Course Management</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a href="{{ asset('addCourse')}}" class="dropdown-item">Add Course</a>
+                  <a href="{{ route('showCourse')}}" class="dropdown-item">Show Course</a>
+                </div>
+              </div>
+            @endif
+
+            @if(Auth::check() && Auth::user()->role=='teacher')
+            <div class="inner"><a href="{{ asset('uploadHrdf')}}" class="btn btn-xs-danger">Apply HRDF</a></div>
+            @endif
+
             <div class="inner"><a href="{{ route('editProfile',['id'=>$user->id]) }}" class="btn btn-xs-danger">Edit Profile</a></div>
             <div class="inner"><a class="btn btn-xs-primary" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

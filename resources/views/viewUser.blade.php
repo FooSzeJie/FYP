@@ -26,8 +26,9 @@
                             <td>{{$user->role}}</td>
                             <td>
                                 @if (Auth::check() && Auth::user()->email === "abc@gmail.com")
-                                    <a href="{{ route('editTeacher',['id' =>$user->id])}}" class="btn btn-xs-danger">Teacher</a>
-                                    <a href="{{ route('editUser',['id' =>$user->id])}}" class="btn btn-xs-danger">User</a>
+                                <a href="{{ route('editAdmin',['id' =>$user->id])}}" class="btn btn-xs-danger">Admin</a>
+                                <a href="{{ route('editTeacher',['id' =>$user->id])}}" class="btn btn-xs-danger">Teacher</a>
+                                <a href="{{ route('editUser',['id' =>$user->id])}}" class="btn btn-xs-danger">User</a>
                                 @endif
                             </td>
                         </tr>

@@ -20,12 +20,11 @@
             <h1>Comment</h1>
             <form action="{{route('addComment')}}" method="POST">
                 @CSRF
-                @foreach ($userID as $user)
+
 
                 <div class="form-group">
                     <label for="studentName">Your Name: </label>
-                    <label type="text" class="form-control" id="userID" name="userID" value="{{$user->id}}" readonly>{{$user->name}}</label>
-                    <input type="hidden" class="form-control" id="userID" name="userID" value="{{$user->id}}">
+                    <label type="text" class="form-control" id="userID" name="userID" value="{{ Auth::user()->id }}" readonly>{{ Auth::user()->name }}</label>
                 </div>
 
                 <div class="form-group">
@@ -42,7 +41,7 @@
                             @endforeach
                         </select>
                 </div>
-                @endforeach
+                
                 <button type="submit" class="btn btn-primary">ADD</button>
             </form>
             <br>

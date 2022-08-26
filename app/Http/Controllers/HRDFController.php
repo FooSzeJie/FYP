@@ -8,6 +8,7 @@ use DB;
 use App\Models\Hrdf;
 use App\Models\User;
 use Auth;
+use Session;
 
 class HRDFController extends Controller
 {
@@ -21,13 +22,17 @@ class HRDFController extends Controller
         $hrdf=$r->file('HRDFForm');        
         $hrdf->move('files',$hrdf->getClientOriginalName());               
         $hrdfForm=$hrdf->getClientOriginalName(); 
-        $addCourse=Hrdf::create([
-            'userID' => Auth::id(),
+        $addHrdf=Hrdf::create([
+            'userID' => Auth::user()->id,
             'hrdfForm'=>$hrdfForm,
             'status' => $r-> status,
         ]);
-            Return redirect()->route('uploadHrdf');
+
+        Session:: flash('success',"HRDF form was upload Successfully!");
+            //Return redirect()->asset('uploadHrdf');
+            return view('uploadHrdf');
     }
+
 
     public function showHRDF(){
 
