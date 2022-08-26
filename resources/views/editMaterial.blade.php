@@ -1,7 +1,19 @@
 @extends('layouts2')
 @section('content2')
+<head>
+    <style>
+        h1{
+            color: #DCDCDC;
+            font-size: 5rem;
+        }
 
-<div class="container">
+        label{
+            color:white;
+        }
+    </style>
+</head>
+
+<div>
     <br>
     <h1>Edit Material</h1>
     <form action="{{ route('updateMaterial')}}" method="POST" enctype="multipart/form-data">

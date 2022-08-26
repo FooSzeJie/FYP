@@ -2,13 +2,17 @@
 @section('content2')
 <head>
     <style>
+        h1{
+            color: #DCDCDC;
+            font-size: 5rem;
+        }
+
         label{
             color:white;
         }
     </style>
 </head>
 
-<div class="container">
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
@@ -45,6 +49,5 @@
         </div>
         <div class="col-sm-2"></div>
     </div>
-</div>
 
 @endsection

@@ -1,12 +1,18 @@
 @extends('layouts2')
 @section('content2')
 <style>
-        label{
-            color:white;
-        }
-    </style>
+    h1{
+        color: #DCDCDC;
+        font-size: 5rem;
+    }
 
-<div class="container">
+    label{
+        color:white;
+    }
+    
+</style>
+
+<div>
     <br>
     <h1>Add Materials</h1>
     <form action="{{ route('addMaterial')}}" method="POST" enctype="multipart/form-data">

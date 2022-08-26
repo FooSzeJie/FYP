@@ -3,7 +3,9 @@
  <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Elementary English</title>
+
+   <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+   <title>E.EDU.Center</title>
    <style>
        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -144,16 +146,6 @@ body{
  margin-left: 280px;
 }
 
-.contentbox p, li{
- color: #fff;
- font-size: 1rem;
- font-weight: 500;
-}
-
-.contentbox h2, h3, h4{
-    color: #00FFFF;
-}
-
 text{
     font-weight: 50px;
     font-size: 30px;
@@ -194,6 +186,7 @@ text{
      
      <div class="menu">
        <div class="item"><a href="{{ asset('/')}}"><i class="fas fa-desktop"></i>Dashboard</a></div>
+
        <div class="item">
          <a class="sub-btn"><i class="fas fa-table"></i>Material<i class="fas fa-angle-right dropdown"></i></a>
         
@@ -207,22 +200,35 @@ text{
             <a href="#" class="sub-item">Week 07</a>
          </div>
        </div>
-       <div class="item"><a href="#"><i class="fas fa-th"></i>Discussion</a></div>
+
+       <div class="item">
+         <a class="sub-btn"><i class="fas fa-table"></i>Discussion<i class="fas fa-angle-right dropdown"></i></a>
+        
+         <div class="sub-menu">
+           <a href="{{ asset('addComment') }}" class="sub-item">Add Comment</a>
+           <a href="#" class="sub-item">Comment</a>
+           
+         </div>
+       </div>
+
+       @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->role=='teacher')
        <div class="item">
          <a class="sub-btn"><i class="fas fa-cogs"></i>Settings<i class="fas fa-angle-right dropdown"></i></a>
          <div class="sub-menu">
-          <a href="#" class="sub-item">Add</a>
-           <a href="#" class="sub-item">Edit</a>
+          <a href="{{ asset('addMaterial') }}" class="sub-item">Add</a>
+          <a href="#" class="sub-item">Edit</a>
          </div>
        </div>
+      @endif
+
        <div class="item"><a href="#"><i class="fas fa-info-circle"></i>About</a></div>
-              <div class="item"><a href="E_ENGL.html"><i class="fas fa-log-out"></i>Exit</a></div>
+
+        <div class="item"><a href="{{ asset('/') }}"><i class="fas fa-log-out"></i>Exit</a></div>
      </div>
    </div>
-   <!--<section class="main">
-     <h1></h1>
-   </section>-->
-   @yield('content2')
+
+    @yield('content2')
+
 
    <script type="text/javascript">
    $(document).ready(function(){

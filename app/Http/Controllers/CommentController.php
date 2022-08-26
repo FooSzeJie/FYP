@@ -39,9 +39,8 @@ class CommentController extends Controller
     public function Discussion(){
         $comments=DB::table('comments')
         ->leftjoin('users', 'users.id', '=', 'comments.userID')
-        ->leftjoin('courses', 'courses.id', '=', 'comments.courseID')
-        ->select('comments.*','users.name as userName', 'users.profileImage as profileImage', 'courses.name as courseName')
+        ->select('comments.*','users.name as userName', 'users.profileImage as profileImage', 'users.role as userRole')
         ->get();
-        Return view('viewMaterialComment')->with('comments',$comments);
+        Return view('discussion')->with('comments',$comments);
     }
 }

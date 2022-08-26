@@ -21,7 +21,7 @@
             background:#333;
             color:#fff;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 2rem;
             }
 
         .btn:hover{
@@ -30,10 +30,10 @@
     </style>
 </head>
 
-<div class="container">
+<div>
     <div class="row">
         <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-12">
             <br><br>
             <h1>Show Material</h1>
                 <table class="table table-striped">

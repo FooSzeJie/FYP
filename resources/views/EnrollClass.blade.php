@@ -1,5 +1,18 @@
 @extends('layouts2')
 @section('content2')
+<head>
+<style>
+        .contentbox p, li{
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 500;
+            }
+
+        .contentbox h2, h3, h4{
+            color: #00FFFF;
+        }
+    </style>
+</head>
 
 @foreach($courses as $course)
 <div class="contentbox">

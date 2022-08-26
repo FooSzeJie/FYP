@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Category Page
+//-------------------------------------------Category Page-----------------------------------------------------------//
 Route::get('/addCategory',function(){
     return view('addCategory');
 });
@@ -34,7 +34,7 @@ Route::post('/updateCategory',[App\Http\Controllers\CategoryController::class,'u
 Route::get('/deleteCategory/{id}', [App\Http\Controllers\CategoryController::class,'delete'])->name('deleteCategory');
 
 
-//Course Page
+//-------------------------------------------Course Page-----------------------------------------------------------//
 Route::get('/addCourse',function(){
     return view('addCourse',['categoryID'=>DB::table('categories')->get()],['teachers'=>DB::table('users')->where('role','=','teacher')->get()]);
 });
@@ -52,24 +52,24 @@ Route::post('/updateCourse',[App\Http\Controllers\CourseController::class,'updat
 
 Route::get('/deleteCourse/{id}', [App\Http\Controllers\CourseController::class,'delete'])->name('deleteCourse');
 
-//Edit User Page
+//-------------------------------------------Edit User Page-----------------------------------------------------------//
 Route::get('viewUser',[App\Http\Controllers\AdminController::class,'view'])->name('viewUser');
 
 Route::get('editTeacher/{id}',[App\Http\Controllers\AdminController::class,'editTeacher'])->name('editTeacher');
 
 Route::get('editUser/{id}',[App\Http\Controllers\AdminController::class,'editUser'])->name('editUser');
 
-//Teacher Page
+//-------------------------------------------Teacher Page-----------------------------------------------------------//
 Route::get('viewTeacher',[App\Http\Controllers\TeacherController::class,'show'])->name('viewTeacher');
 
-//Profile Page
+//-------------------------------------------Profile Page-----------------------------------------------------------//
 Route::get('profile/{id}',[App\Http\Controllers\UserController::class,'view'])->name('profile');
 
 Route::get('editProfile/{id}',[App\Http\Controllers\UserController::class,'editProfile'])->name('editProfile');
 
 Route::post('/updateProfile',[App\Http\Controllers\UserController::class,'updateProfile'])->name('updateProfile');
 
-//course page
+//-------------------------------------------Course Detail page-----------------------------------------------------------//
 Route::get('/CourseDetails/{id}',[App\Http\Controllers\CourseController::class,'detail'])->name('CourseDetails');
 
 Route::get('/EnrollClass/{id}',[App\Http\Controllers\CourseController::class,'enroll'])->name('enroll.class');
@@ -78,7 +78,7 @@ Route::get('editEnrollClass/{id}',[App\Http\Controllers\CourseController::class,
 
 Route::post('updateEnrollClass',[App\Http\Controllers\CourseController::class,'updateDescription'])->name('update.enrollClass');
 
-//Material Page
+//-------------------------------------------Material Page-----------------------------------------------------------//
 Route::get('/addMaterial',function(){
     return view('addMaterial',['courseID'=>DB::table('courses')->get()]);
 });
@@ -95,7 +95,7 @@ Route::post('/updateMaterial',[App\Http\Controllers\MaterialController::class,'u
 
 Route::get('/deleteMaterial/{id}', [App\Http\Controllers\MaterialController::class,'deleteMaterial'])->name('deleteMaterial');
 
-//Event Page
+//-------------------------------------------Event Page-----------------------------------------------------------//
 Route::get('/event', function () {
     return view('viewEvent');
 });
@@ -122,7 +122,7 @@ Route::get('/EMathGame',function(){
 Route::post('/EMathGame',[App\Http\Controllers\EventController::class, 'updateScore'])
 ->name('EMathGame');
 
-//Comment Page
+//-------------------------------------------Comment Page-----------------------------------------------------------//
 Route::get('/addComment',function(){
     return view('addComment',['courseID'=>DB::table('courses')->get()], ['userID'=>DB::table('users')->get()]);
 });
@@ -135,7 +135,7 @@ Route::get('/viewComment',[App\Http\Controllers\CommentController::class,'viewCo
 Route::get('/Discussion',[App\Http\Controllers\CommentController::class,'Discussion'])
 ->name('Discussion');
 
-//Hrdf Page
+//-------------------------------------------Hrdf Page-----------------------------------------------------------//
 Route::get('/uploadHrdf',function(){
     return view('uploadHrdf',['userID'=>DB::table('users')->get()]);
 });
@@ -148,7 +148,7 @@ Route::get('editHrdf/{id}',[App\Http\Controllers\HrdfController::class,'updateHR
 
 Route::get('rejectHrdf/{id}',[App\Http\Controllers\HrdfController::class,'rejectHRDF'])->name('rejectHrdf');
 
-//Contact Us page
+//-------------------------------------------Contact Us page-----------------------------------------------------------//
 Route::get('/addContactUs',function(){
     return view('addContactUs',['courseID'=>DB::table('courses')->get()], ['userID'=>DB::table('users')->get()]);
 });
@@ -158,7 +158,7 @@ Route::post('/addContactUs/store',[App\Http\Controllers\ContactUsController::cla
 Route::get('/showContactUs',[App\Http\Controllers\ContactUsController::class,'showContact'])->name('showContactUs');
 
 
-//Payment
+//-------------------------------------------Payment-----------------------------------------------------------//
 Route::get('plans/create',[App\Http\Controllers\SubscriptionController::class,'showPlanForm'])->name('plans.create');
 
 Route::post('plans/store',[App\Http\Controllers\SubscriptionController::class,'savePlan'])->name('plans.store');
@@ -170,7 +170,5 @@ Route::get('plans/checkout/{planId}',[App\Http\Controllers\SubscriptionControlle
 
 Route::post('plans/process',[App\Http\Controllers\SubscriptionController::class,'processPlan'])->name('plans.process');
 
-//home
-Auth::routes();
-
+//-------------------------------------------home Page-----------------------------------------------------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

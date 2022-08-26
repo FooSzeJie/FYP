@@ -48,9 +48,8 @@
     </style>
 </head>
 
-<body>
+
     @foreach($materialed as $material)
-    <div class="container">
         <div class="video">
             <video width="520" height="360" controls>
                 <source src="{{ asset('videos/') }}/{{$material->video}}" type="video/mp4">
@@ -69,7 +68,6 @@
             <p class="videoDescriptionContent">{{ $material->description}}</p>
         </div>
         @endforeach
-    </div>
-</body>
+
 
 @endsection
