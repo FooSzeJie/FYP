@@ -39,7 +39,7 @@ class EventController extends Controller
     public function editScore($id)
     {
         $event = Event::all()->where('id', $id);
-        Return view('EMathGame') -> with('events', $event);
+        Return redirect()->route('EMathScore');
     }
 
     public function updateScore()
@@ -51,7 +51,8 @@ class EventController extends Controller
         $event->score = $r->score;
         $event->save();
 
-        Return view('EMathScore')->with('events',$event);
+        Return redirect()->route('EMathScore');
+        //Return view('EMathScore')->with('events',$event);
     }
 
     public function showScore(){
