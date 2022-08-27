@@ -19,7 +19,7 @@
                     <tbody class="table-light">
                         @foreach($hrdfs as $hrdf)
                         <tr>
-                            <td>{{$loop->iteration}}</td> 
+                            <td>{{$hrdf->id}}</td> 
                             <td>{{$hrdf->userName}}</td>
                             <td>{{$hrdf->hrdfForm}}</td>
                             <td>{{$hrdf->status}}</td>
