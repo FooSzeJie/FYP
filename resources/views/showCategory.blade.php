@@ -11,7 +11,7 @@
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
-                            <td>ID</td>
+                            <td>NO.</td>
                             <td>Name</td>
                             <td>Action</td>
                         </tr>
@@ -19,7 +19,7 @@
                     <tbody class="table-light">
                         @foreach($categories as $category)
                         <tr>
-                            <td>{{$category->id}}</td> 
+                            <td>{{$loop->iteration}}</td> 
                             <td>{{$category->name}}</td>
                             <td>
                                     <a href="{{ route('editCategory',['id'=>$category->id]) }}" class="btn btn-xs-danger">edit</a>

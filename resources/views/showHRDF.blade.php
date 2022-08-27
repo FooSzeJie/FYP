@@ -9,7 +9,7 @@
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
-                            <td>ID</td>
+                            <td>No.</td>
                             <td>Name</td>
                             <td>Hrdf File</td>
                             <td>status</td>
@@ -19,7 +19,7 @@
                     <tbody class="table-light">
                         @foreach($hrdfs as $hrdf)
                         <tr>
-                            <td>{{$hrdf->id}}</td> 
+                            <td>{{$loop->iteration}}</td> 
                             <td>{{$hrdf->userName}}</td>
                             <td>{{$hrdf->hrdfForm}}</td>
                             <td>{{$hrdf->status}}</td>

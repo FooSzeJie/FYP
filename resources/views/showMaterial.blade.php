@@ -39,7 +39,7 @@
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
-                            <td>ID</td>
+                            <td>No.</td>
                             <td>video</td>
                             <td>Name</td>
                             <td>Document</td>
@@ -49,7 +49,7 @@
                     <tbody class="table-light">
                         @foreach($materialed as $material)
                         <tr>
-                            <td>{{$material->id}}</td>
+                            <td>{{$loop->iteration}}</td>
                             <td>
                                 <video width="150" height="100" controls>
                                     <source src="{{ asset('videos/') }}/{{$material->video}}" type="video/mp4">

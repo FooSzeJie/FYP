@@ -10,7 +10,7 @@
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
-                            <td>ID</td>
+                            <td>No.</td>
                             <td>Name</td>
                             <td>Email</td>
                             <td>Messsage</td>
@@ -19,7 +19,7 @@
                     <tbody class="table-light">
                         @foreach($contacts as $contact)
                         <tr>
-                            <td>{{$contact->id}}</td> 
+                            <td>{{$loop->iteration}}</td> 
                             <td>{{$contact->userName}}</td>
                             <td>{{$contact->userEmail}}</td>
                             <td>{{$contact->message}}</td>

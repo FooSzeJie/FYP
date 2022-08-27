@@ -10,7 +10,7 @@
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
-                            <td>ID</td>
+                            <td>No.</td>
                             <td>Image</td>
                             <td>Name</td>
                             <td>Action</td>
@@ -20,7 +20,7 @@
                         @foreach($courses as $course)
                         @if(Auth::check() && Auth::user()->id == $course->teacher)
                         <tr>
-                            <td>{{$course->id}}</td> 
+                            <td>{{$loop->iteration}}</td> 
                             <td><img src="{{ asset('images/') }}/{{$course->image}}" alt="" width="100" class="img-fluid"></td>
                             <td>{{$course->name}}</td>
                             <td>
