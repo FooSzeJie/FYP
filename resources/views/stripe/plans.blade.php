@@ -219,7 +219,7 @@
             </div>
 
             <div class="pricing-plan__actions">
-                <p class="pricing-plan__cost">RM{{$basic -> price}}</p>
+                <p class="pricing-plan__cost">RM{{$enterprise -> price}}</p>
                 <p Class="pricing-plan__text">per 12 month</p>
                 <a href="#" class="pricing-plan__button">Purchase</a>
                 <p Class="pricing-plan__text">Minimum spend Rm816 over 12 months</p>

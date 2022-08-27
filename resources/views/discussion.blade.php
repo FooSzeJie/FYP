@@ -38,9 +38,9 @@
 </head>
 
 <div class="contentbox">
+    <h1 id="discussion">Discussion</h1>
     <br>
     <div class="row" id="position">
-        <h1 id="discussion">Discussion</h1>
         <div class="row-cols-1 row-cols-md-1 g-2">            
             @foreach($comments as $comment)
             @if($comment->courseID == $comment->courseid)

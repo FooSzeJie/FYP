@@ -119,17 +119,6 @@ Route::post('/updateEMathGame',[App\Http\Controllers\EventController::class,'upd
 
 Route::get('printEMathGame/{id}',[App\Http\Controllers\EventController::class,'printEMathGame'])->name('printEMathGame');
 
-/*
-Route::get('/EMathGame',function(){
-    return view('EMathGame');
-});
-*/
-//Route::get('/EMathGame/{id}',[App\Http\Controllers\EventController::class, 'editScore'])
-//->name('EMathGame');
-
-Route::post('/EMathGame',[App\Http\Controllers\EventController::class, 'updateScore'])
-->name('EMathGame');
-
 //-------------------------------------------Comment Page-----------------------------------------------------------//
 Route::get('/addComment',function(){
     return view('addComment',['courseID'=>DB::table('courses')->get()], ['userID'=>DB::table('users')->get()]);

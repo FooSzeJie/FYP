@@ -25,7 +25,7 @@ class CommentController extends Controller
             'courseID'=>$r->courseID,
         ]);
             Session:: flash('Success',"Product Create Successfully!");
-            Return redirect()->route('viewComment');
+            Return redirect()->route('Discussion');
     }
 
     public function viewComment(){

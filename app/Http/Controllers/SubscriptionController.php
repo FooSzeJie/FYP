@@ -58,7 +58,7 @@ class SubscriptionController extends Controller
 
     public function savePlan(Request $request){
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-        $amount = ($request -> amount * 100);
+        $amount = ($request -> amount);
 
         try{
             $plan = Plan::create([
@@ -88,7 +88,8 @@ class SubscriptionController extends Controller
             dd($ex -> getMessage());
         }
 
-        return "success";
+        Session:: flash('success',"Plans was create Successfully!");
+        return view('welcome');
     }
 
     public function allPlans(){
