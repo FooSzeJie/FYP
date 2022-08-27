@@ -1,0 +1,88 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB; //import Database Library
+use App\Models\Event; 
+use File;
+
+class EventController extends Controller
+{
+    public function index(){
+        return view('EMathEvent')
+        -> with('events',Event::all());
+    }
+
+    public function addName(){
+        $r = request();   //received the data by GET or POST method $_POST['name']
+        /*
+        $events = Event :: create([
+            'name' => $r->name,
+            'score'=>$r->score
+        ]);*/
+
+        //$find = Event::all()->where('id');
+
+        //Using insertGetId()  
+        $id = DB::table('events')->insertGetId([
+            'name' => $r->name,
+            'score' => $r->score
+        ]);
+        $lastId =$r-> $id;
+
+        //Using lastInsertId() method
+        $lastId = DB::getPdo()->lastInsertId();
+        /*
+        $last = DB::table('events')->latest()->first();
+
+        DB::getPdo()->lastInsertId();
+        DB::table('events')->orderBy('id','desc')->first();
+*/
+        Return view('EMathGame') -> with('events', $lastId, $id);
+
+        //Return view('EMathGame');
+        //return redirect('EMathGame/'.$id);
+    }
+/*
+    public function store() {
+
+        $input = Event::all();
+        $id = Event::create($input)->id;
+    
+        return redirect('company/'.$id);
+    }*/
+
+    public function editScore($id)
+    {
+        $event = Event::all()->where('id', $id);
+        Return view('EMathGame')->with('events',$event);
+    }
+
+    public function updateScore($lastId)
+    {
+        $r=request();
+        $event = Event::find($r->playerID);
+        $event = Event::all()->where('id', $id);
+
+        $event->name = $r->playerName;
+        $event->score = $r->score;
+        $event->save();
+
+        Return redirect()->route('printEMathGame', $lastId)->with('events',$event);
+        //Return view('printEMathGame', $event->id)->with('events',$event);
+        //Return view('EMathScore')->with('events',$event);
+    }
+
+    public function printEMathGame($id){
+        $event = Event::all()->where('id',$id);
+
+        Return view('EMathCerificate')->with('events',$event);
+    }
+
+    public function showScore(){
+        $showScore = Event::all();
+        //->where('score', \DB::raw("(select max(`score`) from orders)"))->get();
+        Return view('EMathScore')->with('events', $showScore);
+    }
+}

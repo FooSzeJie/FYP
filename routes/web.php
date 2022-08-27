@@ -113,7 +113,12 @@ Route::post('/EMathEvent/store',[App\Http\Controllers\EventController::class,'ad
 
 Route::get('/EMathScore',[App\Http\Controllers\EventController::class,'showScore'])->name('EMathScore');
 
+Route::get('editEMathGame/{id}',[App\Http\Controllers\EventController::class,'editScore'])->name('editEMathGame');
+
 Route::post('/updateEMathGame',[App\Http\Controllers\EventController::class,'updateScore'])->name('updateEMathGame');
+
+Route::get('printEMathGame/{id}',[App\Http\Controllers\EventController::class,'printEMathGame'])->name('printEMathGame');
+
 /*
 Route::get('/EMathGame',function(){
     return view('EMathGame');

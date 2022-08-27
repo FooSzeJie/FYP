@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elementary MATH Quiz</title>
-    <link rel="stylesheet" href="css/game1.css">
-    <link rel="stylesheet" href="css/game2.css">
+    <link rel="stylesheet" href="{{ asset('css/game1.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/game2.css') }}">
 </head>
+
 <body>
     <div class="container">
         <div id="game" class="justify-center flex-column">
@@ -108,9 +109,12 @@ startGame = () => {
 
 getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-        localStorage.setItem('mostRecentScore', score)
 
-        return window.location.href='{{ asset('EMathScore') }}'
+            document.getElementById('playerScore').value= score;
+
+            var button = document.getElementById('clickButton');
+            button.form.submit();
+            
     }
 
     questionCounter++
@@ -160,25 +164,20 @@ incrementScore = num => {
     scoreText.innerText = score
 }
 
-window.onload = function(){
-    var button = document.getElementById('clickButton');
-    button.form.submit();
-}
+
 
 startGame()
     </script>
-    
     <form action="{{ route('EMathGame') }}" method="POST" enctype="multipart/form-data">
         @CSRF
-        @foreach($events as $event)
         <div class="form-group">
-            <input type="hidden" name="playerID" id="playerID" value="{{$event->id}}">
+        @foreach($events as $event)
+            <input type="hidden" name="playerID" id="playerID" value="{{ $event->id }}">
             <input type="hidden" name="playerName" id="playerName" value="{{$event->name}}">
-            <input type="hidden" name="score" id="score" value="{{$event->score}}">
-        </div>       
-
-        @endforeach
-        <button type="submit" id="clickButton" class="btn btn-primary"> Comfirm </button>
+            <input type="hidden" name="playerScore" id="playerScore" value="0"> 
+            @endforeach
+        </div>    
+        <button type="submit" class="btn btn-primary" id="clickButton">Update</button>     
     </form>
 </body>
 </html>

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>E_MATH_Score</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/game1.css">
+        <link rel="stylesheet" href="{{ asset('css/game1.css') }}">
         <style>
             h1{
                 color: white;
@@ -38,6 +38,8 @@
                 color: white;
             }
 
+            
+
         </style>
     </head>
     <body>
@@ -64,6 +66,8 @@
                         </tbody>
                     </table>
                 </div>
+                <br><br>
+                <a href="{{ asset ('EMathEvent') }}" id="highscore-btn" class="btn">Back<i class="fas fa-crown"></i></a>
             </div>
         </div>
     </body>
