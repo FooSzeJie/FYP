@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-<h1 class="heading"> experienced instructors </h1>
+<h1 class="heading"> Experienced Instructors </h1>
 
 <!-- teacher section  -->
 

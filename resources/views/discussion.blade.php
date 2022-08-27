@@ -40,28 +40,29 @@
 <div class="contentbox">
     <br>
     <div class="row" id="position">
-    <h1 id="discussion">Discussion</h1>
-        <div class="row-cols-1 row-cols-md-1 g-2">
-        @foreach($comments as $comment)
-        <div class="col" id="positionCol">
-            <br>
-            
-            <div class="card text-center" style="height: 200px;">
-                <input type="hidden" name="id" id="id" value="{{$comment->id}}">
-                <img src="{{ asset('profileImage/') }}/{{ $comment->profileImage }}" width="50" class="img-fluid rounded mx-auto d-block" alt="" >
-                <div class="card-body">
-                    <h5 class="card-title" id="name">{{ $comment->userName }}</h5>
-                    <p class="card-text" id="class">{{ $comment->userRole }}</p>
-                    <p class="card-text" id="comment">{{ $comment->comment }}</p>
+        <h1 id="discussion">Discussion</h1>
+        <div class="row-cols-1 row-cols-md-1 g-2">            
+            @foreach($comments as $comment)
+            @if($comment->courseID == $comment->courseid)
+                <div class="col" id="positionCol">
+                    <br>                
+                    <div class="card text-center" style="height: 200px;">
+                        <input type="hidden" name="id" id="id" value="{{$comment->id}}">
+                        <img src="{{ asset('profileImage/') }}/{{ $comment->profileImage }}" width="50" class="img-fluid rounded mx-auto d-block" alt="" >
+                        <div class="card-body">
+                            <h5 class="card-title" id="name">{{ $comment->userName }}</h5>
+                            <p class="card-text" id="class">{{ $comment->userRole }}</p>
+                            <p class="card-text" id="comment">{{ $comment->comment }}</p>
 
-            </div>
-            </div>
-            <br>
-        </div>
-        @endforeach
-        
+                        </div>  
+                    </div>
+                    <br>
+                </div>
+            @endif
+            @endforeach
         </div>
     </div>
+</div>
 
 <script>
     
