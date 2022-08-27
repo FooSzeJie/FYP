@@ -34,6 +34,7 @@ class CommentController extends Controller
         ->leftjoin('courses', 'courses.id', '=', 'comments.courseID')
         ->select('comments.*','users.name as userName', 'users.profileImage as profileImage', 'courses.name as courseName')
         ->get();
+        
         Return view('viewComment')->with('comments',$comments);
     }
 
@@ -43,6 +44,7 @@ class CommentController extends Controller
         ->leftjoin('courses', 'courses.id', '=', 'comments.courseID')
         ->select('comments.*','users.name as userName', 'users.profileImage as profileImage', 'users.role as userRole', 'courses.id as courseid')
         ->get();
+        
         Return view('discussion')->with('comments',$comments);
     }
 }
