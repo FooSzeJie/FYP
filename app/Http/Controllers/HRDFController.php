@@ -39,7 +39,9 @@ class HRDFController extends Controller
         $hrdf = DB::table('hrdfs')
         ->leftjoin('users', 'users.id', '=', 'hrdfs.userID')
         ->select('hrdfs.*', 'users.name as userName')
-        ->get();
+        //-get();
+        ->paginate(5);
+        
         return view('showHRDF')->with('hrdfs',$hrdf);
     }       
 

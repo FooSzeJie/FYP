@@ -21,7 +21,10 @@ class CategoryController extends Controller
     }
 
     public function show(){
-        $category=Category::all();
+        $category = DB::table('categories')
+        //-get();
+        ->paginate(5);
+
         return view('showCategory')->with('categories',$category);
     }
 

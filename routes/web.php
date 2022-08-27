@@ -78,8 +78,6 @@ Route::get('/EnrollClass/{id}',[App\Http\Controllers\CourseController::class,'en
 
 Route::get('editEnrollClass/{id}',[App\Http\Controllers\CourseController::class,'editDescription'])->name('edit.enrollClass');
 
-Route::post('updateEnrollClass',[App\Http\Controllers\CourseController::class,'updateDescription'])->name('update.enrollClass');
-
 //-------------------------------------------Material Page-----------------------------------------------------------//
 Route::get('/addMaterial',function(){
     return view('addMaterial',['courseID'=>DB::table('courses')->get()]);

@@ -30,11 +30,18 @@
                     </tbody>
                 </table>
             <br><br>
-            <div class="container">
-</div>
+            <div class="container"></div>
         </div>
         <div class="col-sm-1"></div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            {{ $categories->links('pagination::bootstrap-4')}}
+        </div>
+    </div>
+
 </div>
 
 @endsection

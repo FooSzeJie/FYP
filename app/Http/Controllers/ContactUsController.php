@@ -32,7 +32,9 @@ class ContactUsController extends Controller
         ->leftjoin('users', 'users.id', '=', 'contact_us.userID')
         ->leftjoin('courses', 'courses.id', '=', 'contact_us.courseID')
         ->select('contact_us.*','users.name as userName', 'users.email as userEmail', 'courses.name as courseName')
-        ->get();
+        //-get();
+        ->paginate(5);
+
         Return view('showContactUs')->with('contacts',$contact);
     }
 }

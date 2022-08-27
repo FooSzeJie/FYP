@@ -48,10 +48,10 @@
     </style>
 </head>
 
-
+<div class="contentbox">
     @foreach($materialed as $material)
         <div class="video">
-            <video width="520" height="360" controls>
+            <video width="720" height="560" controls>
                 <source src="{{ asset('videos/') }}/{{$material->video}}" type="video/mp4">
                 <source src="{{ asset('videos/') }}/{{$material->video}}" type="video/ogg">
                 Your browser does not support the video tag.
@@ -68,6 +68,6 @@
             <p class="videoDescriptionContent">{{ $material->description}}</p>
         </div>
         @endforeach
-
+</div>
 
 @endsection

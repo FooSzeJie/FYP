@@ -30,10 +30,10 @@
     </style>
 </head>
 
-<div>
+<div class="contentbox">
     <div class="row">
         <div class="col-sm-1"></div>
-        <div class="col-sm-12">
+        <div class="col-sm-10">
             <br><br>
             <h1>Show Material</h1>
                 <table class="table table-striped">
@@ -70,10 +70,15 @@
                     </tbody>
                 </table>
             <br><br>
-            <div class="container">
-</div>
+            <div class="container"></div>
         </div>
-        <div class="col-sm-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            {{ $materialed->links('pagination::bootstrap-4')}}
+        </div>
     </div>
 
+</div>
 @endsection

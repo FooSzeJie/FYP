@@ -32,11 +32,16 @@ class MaterialController extends Controller
             'materials'=>$fileName,
             'courseID'=>$r->courseID,
         ]);
-            Return redirect()->route('viewMaterial');
+            Return redirect()->route('showMaterial');
     }
 
     public function showMaterial(){
-        $materials=Material::all();
+        $materials = DB::table('materials')
+        ->leftjoin('courses', 'courses.id', '=', 'materials.courseID')
+        ->select('materials.*', 'courses.name as courseName')
+        //-get();
+        ->paginate(5);
+
         return view('showMaterial')->with('materialed',$materials);
     }
 /*

@@ -50,7 +50,10 @@ class CourseController extends Controller
     }
 
     public function show(){
-        $courses=Course::all();
+        $courses = DB::table('courses')
+        //-get();
+        ->paginate(5);
+
         return view('showCourse')->with('courses',$courses);
     }
 
@@ -105,10 +108,4 @@ class CourseController extends Controller
         $courses=Course::all()->where('id',$id);
         Return view('EnrollClass')->with('courses',$courses);
     } 
-
-    public function editDescription($id){
-        $courses=Course::all()->where('id',$id);
-        Return view('editEnrollClass')->with('courses',$courses);
-    } 
-
 }
