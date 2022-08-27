@@ -199,7 +199,7 @@
             <div class="pricing-plan__actions">
                 <p class="pricing-plan__cost">RM{{$professional -> price}}</p>
                 <p Class="pricing-plan__text">per 6 month</p>
-                <a href="#" class="pricing-plan__button">Purchase</a>
+                <a href="{{ route('plans.checkout', $professional->plan_id) }}" class="pricing-plan__button">Purchase</a>
                 <p Class="pricing-plan__text">Minimum spend Rm816 over 12 months</p>
             </div>
         </section>
@@ -221,7 +221,7 @@
             <div class="pricing-plan__actions">
                 <p class="pricing-plan__cost">RM{{$enterprise -> price}}</p>
                 <p Class="pricing-plan__text">per 12 month</p>
-                <a href="#" class="pricing-plan__button">Purchase</a>
+                <a href="{{ route('plans.checkout', $enterprise->plan_id) }}" class="pricing-plan__button">Purchase</a>
                 <p Class="pricing-plan__text">Minimum spend Rm816 over 12 months</p>
             </div>
         </section>

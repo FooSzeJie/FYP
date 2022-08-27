@@ -8,8 +8,12 @@
             <form action="{{ route('plans.store') }}" method="POST" enctype="multipart/form-data">
             @CSRF
             <div class="form-group">
-                <label for="planName">Plan Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter Plan Name">
+                <label for="planName">Plan Name: </label>
+                <select name="name" id="name" class="form-control">
+                    <option value="basic">Basic</option>
+                    <option value="professional">Professional</option>
+                    <option value="enterprise">Enterprise</option>
+                </select>
             </div>
 
             <div class="form-group">
