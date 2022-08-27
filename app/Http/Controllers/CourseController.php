@@ -41,8 +41,11 @@ class CourseController extends Controller
 
 
     public function view(){
+        $courses = DB::table('courses')
+        ->leftjoin('categories', 'categories.id', '=', 'courses.CategoryID')
+        ->select('courses.*', 'categories.name as categoryName')
+        ->get();
 
-        $courses=Course::all();
         return view('viewCourse')->with('courses',$courses);
     }
 

@@ -63,6 +63,8 @@
                 <a class="dropdown-toggle, btn btn-xs-danger" id="toggleButton"  data-toggle="dropdown" aria-expanded="false">Admin Control</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a href="{{ route('viewUser')}}" class="dropdown-item">Change Role</a>
+                  <a href="{{ asset('addCategory')}}" class="dropdown-item">Create Category</a>
+                  <a href="{{ route('showCategory')}}" class="dropdown-item">Show Category</a>
                   <a href="{{ route('showHrdf')}}" class="dropdown-item">HRDF</a>                  
                   <a href="{{ route('showContactUs')}}" class="dropdown-item">Show Contact us</a>
                   <a href="{{ route('plans.create')}}" class="dropdown-item">Create Plans</a>
@@ -74,7 +76,7 @@
               <div class="inner">
                 <a class="dropdown-toggle, btn btn-xs-danger" id="toggleButton"  data-toggle="dropdown" aria-expanded="false">Course Management</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a href="{{ asset('addCourse')}}" class="dropdown-item">Add Course</a>
+                  <a href="{{ asset('addCourse')}}" class="dropdown-item">Create Course</a>
                   <a href="{{ route('showCourse')}}" class="dropdown-item">Show Course</a>
                 </div>
               </div>
@@ -96,6 +98,7 @@
                                     </form></div>
           </div>
       @endforeach
+      <br><br>
     </div>
     <div class="col-sm-1"></div>
   </div>
