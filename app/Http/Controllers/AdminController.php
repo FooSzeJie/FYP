@@ -17,7 +17,10 @@ class AdminController extends Controller
     //view role adjust page
     public function view(){
         if (Auth::check() && Auth::user()->email === "abc@gmail.com") {
-            $users = User::all();
+            $users = DB::table('users')
+            //-get();
+            ->paginate(5);
+
             return view('viewUser')->with('users',$users);
             
         }

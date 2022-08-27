@@ -20,8 +20,6 @@
             <h1>Comment</h1>
             <form action="{{route('addComment')}}" method="POST">
                 @CSRF
-
-
                 <div class="form-group">
                     <label for="studentName">Your Name: </label>
                     <label type="text" class="form-control" id="userID" name="userID" value="{{ Auth::user()->id }}" readonly>{{ Auth::user()->name }}</label>

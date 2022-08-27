@@ -8,6 +8,7 @@ use App\models\Course;
 use App\Models\ContactUs;
 use App\Models\User;
 use Session;
+use Auth;
 
 class ContactUsController extends Controller
 {
@@ -19,7 +20,7 @@ class ContactUsController extends Controller
         $r=request();
 
         $addComment=ContactUs::create([
-            'userID'=>$r->userID,
+            'userID'=>Auth::user()->id,
             'message'=>$r->message,
             'courseID'=>$r->courseID,
         ]);

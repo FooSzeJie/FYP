@@ -32,8 +32,8 @@
 
 <div class="contentbox">
     <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-0"></div>
+        <div class="col-sm-6">
             <br><br>
             <h1>Show Material</h1>
                 <table class="table table-striped">
