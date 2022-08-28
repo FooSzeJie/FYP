@@ -33,6 +33,24 @@ class HRDFController extends Controller
             return view('uploadHrdf');
     }
 
+    public function update(){
+        $r=request();
+        $hrdf=Hrdf::find($r->id);
+        
+        if($r->file('HRDFForm')!=''){
+            $hrdf=$r->file('HRDFForm');        
+            $hrdf->move('files',$hrdf->getClientOriginalName());                   
+            $hrdfForm=$hrdf->getClientOriginalName(); 
+            $courses->hrdfForm=$hrdfForm;
+            }    
+
+        $hrdf->status=$r-> status;
+        $hrdf->save();
+
+        Session::flash('success','HRDF form was upload Successfully!');
+        return view('uploadHrdf')->with('hrdfs',$hrdf);
+    }
+
 
     public function showHRDF(){
 

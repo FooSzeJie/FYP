@@ -78,12 +78,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a href="{{ asset('addCourse')}}" class="dropdown-item">Create Course</a>
                   <a href="{{ route('showCourse')}}" class="dropdown-item">Show Course</a>
+                  <a href="{{ asset('uploadHrdf')}}" class="dropdown-item">Apply HRDF</a>
                 </div>
               </div>
-            @endif
-
-            @if(Auth::check() && Auth::user()->role=='teacher')
-            <div class="inner"><a href="{{ asset('uploadHrdf')}}" class="btn btn-xs-danger">Apply HRDF</a></div>
             @endif
 
             <div class="inner"><a href="{{ route('editProfile',['id'=>$user->id]) }}" class="btn btn-xs-danger">Edit Profile</a></div>

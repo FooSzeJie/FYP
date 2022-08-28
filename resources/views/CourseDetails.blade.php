@@ -29,7 +29,13 @@
                     <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">By</p>
                             <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">E-EDU Center</p>
                                 <br>
-                                <a href="{{ route('enroll.class', ['id' => $course -> id]) }}" class="btn">ENROLL</a>
+                        @if(Auth::user()->paymentStatus == 'approve')
+                            <a href="{{ route('enroll.class', ['id' => $course -> id]) }}" class="btn">ENROLL</a>
+                        @endif
+
+                        @if(Auth::user()->paymentStatus == null || Auth::user()->paymentStatus == 'notApprove')
+                        <a href="{{ route('plans.all') }}" class="btn">Go to Paid First</a>
+                        @endif
                                 </div>
     </section>
     @endforeach

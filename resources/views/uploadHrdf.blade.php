@@ -24,7 +24,7 @@
 
             <div class="form-group">
                 <label for="courseName">Teacher Name: </label>
-                <label for="courseName" value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</label>
+                <label for="courseName">{{ Auth::user()->name }}</label>
 
                 <input type="hidden" name="status" id="status" value="Pending"> 
             </div>
@@ -43,7 +43,7 @@
                 </p>
             </div>
 
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Upload</button>
             <br><br>
         </div>
         </form>

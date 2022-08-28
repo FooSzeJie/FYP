@@ -56,8 +56,13 @@
   <div class="col-sm-auto">
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
-            <img src="{{ asset('images/') }}/{{$course->image}}" alt="" class="image">
-            <button class="btn btn-info btn-xs">Learn More</button>
+            <img src="{{ asset('images/') }}/{{$course->image}}" alt="image" class="image">
+            <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a>
+            @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
+            
+    <a href="{{ route('editCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Edit</a>
+    <a href="{{ route('deleteCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Delete</a>
+@endif
             <h3>{{$course->name}}</h3>
             <p></p>
             <div class="icons">
@@ -80,8 +85,13 @@
   <div class="col-sm-auto">
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
-            <img src="{{ asset('images/') }}/{{$course->image}}" alt="" class="image">
-            <button class="btn btn-info btn-xs">Learn More</button>
+            <img src="{{ asset('images/') }}/{{$course->image}}" alt="image" class="image">
+            <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a>
+            @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
+            
+    <a href="{{ route('editCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Edit</a>
+    <a href="{{ route('deleteCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Delete</a>
+@endif
             <h3>{{$course->name}}</h3>
             <p></p>
             <div class="icons">

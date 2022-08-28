@@ -45,7 +45,9 @@ class UserController extends Controller
         $users->address=$r->userAddress;
         $users->save();
 
+        $userID = Auth::user()->id;
+
         Session::flash('success','Profile Was update Successfully');
-        return view('welcome');
+        return redirect()->route('profile',['id'=>$userID]);
     }
 }

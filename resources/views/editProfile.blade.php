@@ -24,9 +24,9 @@
             </div>
 
             <div class="form-group">
-                    <label for="userImage">Course Image: </label>
+                    <label for="ProfileImage">Profile Image: </label>
                     <img src="{{ asset('images')}}/{{$user->image}}" alt="" class="img-fluid" width="100">
-                    <input type="file" class="form-control" id="userImage" name="userImage" value="">
+                    <input type="file" class="form-control" id="ProfileImage" name="ProfileImage" value="">
             </div>
 
            
