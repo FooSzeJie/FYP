@@ -168,7 +168,7 @@ incrementScore = num => {
 
 startGame()
     </script>
-    <form action="{{ route('EMathGame') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('updateEMathGame') }}" method="POST" enctype="multipart/form-data">
         @CSRF
         <div class="form-group">
         @foreach($events as $event)
