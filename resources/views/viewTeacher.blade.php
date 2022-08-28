@@ -26,15 +26,6 @@
     @endforeach     
 </section>
 
-<section class="teacher">
-    <div class="box">
-        <span>Welcome to become our instructors</span>
-        <br>
-        <div class="btn">
-        <a href="#" style="color:white">Join Us!</a>
-        </div>
-        </div>
-</section>
 </div> 
 
 @endsection

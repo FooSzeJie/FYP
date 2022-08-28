@@ -3,12 +3,12 @@
 
 <div class="container">
     <br>
-    <h1>Edit Class</h1>
+    <h1>Edit Profile</h1>
     <form action="{{ route('updateProfile')}}" method="POST" enctype="multipart/form-data">
             @CSRF
             @foreach($users as $user)
             <div class="form-group">
-                <label for="userName">Course Name: </label>
+                <label for="userName">Profile Name: </label>
                 <input type="text" class="form-control" id="userName" name="userName" value="{{$user->name}}"> 
                 <input type="hidden" name="userID" id="userID" value="{{$user->id}}"> 
             </div>

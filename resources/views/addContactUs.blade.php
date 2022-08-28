@@ -19,16 +19,8 @@
     <div class="inputBox">
         <label for="studentName">Your Name: </label>
         <label type="text" class="form-control" id="userID" name="userID" value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</label>
+        <input type="hidden" name="courseID" id="courseID">
     </div>
-
-    <div class="form-group">
-                        <label for="courseID">Course Name</label>
-                        <select name="courseID" id="courseID" class="form-control">
-                            @foreach ($courseID as $course)
-                                <option value="{{$course->id}}">{{$course->name}}</option>
-                            @endforeach
-                        </select>
-                </div>
 
     <textarea placeholder="message" name="message" id="message" cols="30" rows="10"></textarea>
 

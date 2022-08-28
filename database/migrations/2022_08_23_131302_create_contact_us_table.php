@@ -16,7 +16,7 @@ class CreateContactUsTable extends Migration
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
             $table->string('userID');
-            $table->string('courseID');
+            $table->string('courseID')->nullable();
             $table->text('message');
             $table->timestamps();
         });
