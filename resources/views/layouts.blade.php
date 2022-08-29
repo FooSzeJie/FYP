@@ -24,7 +24,7 @@
 <div class="container">
 <header>
 
-    <a href="#" class="logo">E-<span>EDU</span></a>
+    <a href="{{ asset('/') }}" class="logo">E-<span>EDU</span></a>
 
     <div id="menu" class="fas fa-bars"></div>
 
@@ -39,7 +39,7 @@
         <a href="{{ asset('addContactUs') }}">contact</a>
         
         @auth
-            <a href="{{route('profile',['id'=>Auth::user()->id])}}"><img src="{{ asset('profileImage/') }}/{{Auth::user()->profileImage}}" alt="" width="30px" height="30px" class="rounded" id ="profileImage"></a>
+            <a href="{{route('profile',['id'=>Auth::user()->id])}}"><img src="{{ asset('profileImage/') }}/{{Auth::user()->profileImage}}" alt="" width="30px" height="30px" class="rounded-circle" id ="profileImage"></a>
         @endauth
             @guest
             <a href="login">Login</a>

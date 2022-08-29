@@ -16,33 +16,47 @@ class MaterialController extends Controller
     }
 
     public function addMaterial(){
-        $r=request();
-        $video=$r->file('video');        
-        $video->move('videos',$video->getClientOriginalName());               
-        $videoName=$video->getClientOriginalName(); 
+        if(Auth()->user()->paymentStatus != 'approve'){
+                return view('/welcome');
+        }
+        else{
+            $r=request();
+            $video=$r->file('video');        
+            $video->move('videos',$video->getClientOriginalName());               
+            $videoName=$video->getClientOriginalName(); 
 
-        $material=$r->file('materials');        
-        $material->move('files',$material->getClientOriginalName());                    
-        $fileName=$material->getClientOriginalName(); 
+            $material=$r->file('materials');        
+            $material->move('files',$material->getClientOriginalName());                    
+            $fileName=$material->getClientOriginalName(); 
 
-        $addMaterial=Material::create([
-            'name'=>$r->materialName,
-            'video'=>$videoName,
-            'description'=>$r->description,
-            'materials'=>$fileName,
-            'courseID'=>$r->courseID,
-        ]);
-            Return redirect()->route('showMaterial');
+            $addMaterial=Material::create([
+                'name'=>$r->materialName,
+                'video'=>$videoName,
+                'description'=>$r->description,
+                'materials'=>$fileName,
+                'courseID'=>$r->courseID,
+            ]);
+                Return redirect()->route('showMaterial');
+        }
+
+        
     }
 
     public function showMaterial(){
-        $materials = DB::table('materials')
-        ->leftjoin('courses', 'courses.id', '=', 'materials.courseID')
-        ->select('materials.*', 'courses.name as courseName')
-        //-get();
-        ->paginate(5);
+        if(Auth()->user()->paymentStatus != 'approve'){
+                return view('/welcome');
+            }
+        else{
+            $materials = DB::table('materials')
+            ->leftjoin('courses', 'courses.id', '=', 'materials.courseID')
+            ->select('materials.*', 'courses.name as courseName')
+            //-get();
+            ->paginate(5);
 
-        return view('showMaterial')->with('materialed',$materials);
+            return view('showMaterial')->with('materialed',$materials);
+        }
+
+        
     }
 /*
     public function viewMaterial1(){
@@ -53,53 +67,80 @@ class MaterialController extends Controller
     }
 */
     public function viewMaterial($id){
-        $materials=Material::all()->where('id',$id);
+        if(Auth()->user()->paymentStatus != 'approve'){
+            return view('/welcome');
+        }
 
-        Return view('viewMaterial')->with('materialed',$materials)
-        ->with('CourseID',Course::all());         
+        else{
+            $materials=Material::all()->where('id',$id);
+
+            Return view('viewMaterial')->with('materialed',$materials)
+            ->with('CourseID',Course::all());
+        }
+                
     }
 
     public function editMaterial($id){
-        $material=Material::all()->where('id',$id);
+        if(Auth()->user()->paymentStatus != 'approve'){
+            return view('/welcome');
+            }
+        else{
+            $material=Material::all()->where('id',$id);
 
         Return view('editMaterial')
         ->with('material',$material)
         ->with('CourseID',Course::all());
+        }
+        
         
     } 
 
     public function updateMaterial(){
-        $r=request();
-        $material=Material::find($r->courseID);
+        if(Auth()->user()->paymentStatus != 'approve'){
+            return view('/welcome');
+        }
         
-        if($r->file('video')!=''){
-            $video=$r->file('video');        
-            $video->move('videos',$video->getClientOriginalName());                   
-            $videoName=$video->getClientOriginalName(); 
-            $material->video=$videoName;
-            }    
+        else{
+            $r=request();
+            $material=Material::find($r->courseID);
+            
+            if($r->file('video')!=''){
+                $video=$r->file('video');        
+                $video->move('videos',$video->getClientOriginalName());                   
+                $videoName=$video->getClientOriginalName(); 
+                $material->video=$videoName;
+                }    
 
-            if($r->file('materials')!=''){
-                $materials=$r->file('materials');        
-                $materials->move('files',$materials->getClientOriginalName());                   
-                $materialsName=$materials->getClientOriginalName(); 
-                $material->materials=$materialsName;
-                } 
+                if($r->file('materials')!=''){
+                    $materials=$r->file('materials');        
+                    $materials->move('files',$materials->getClientOriginalName());                   
+                    $materialsName=$materials->getClientOriginalName(); 
+                    $material->materials=$materialsName;
+                    } 
+            
+            $material->name=$r->materialName;
+            $material->description=$r->description;
+            $material->courseID=$r->courseID;
+            $material->save();
+
+            Session::flash('success','Course Was update Successfully');
+            Return redirect()->route('viewMaterial');
+        }
         
-        $material->name=$r->materialName;
-        $material->description=$r->description;
-        $material->courseID=$r->courseID;
-        $material->save();
-
-        Session::flash('success','Course Was update Successfully');
-        Return redirect()->route('viewMaterial');
     }
 
     public function deleteMaterial($id)
     {
-        $deleteMaterial = Material::find($id);
-        $deleteMaterial -> delete();
-        Session:: flash('success',"Course was Delete Successfully!");
-        Return redirect()->route('viewMaterial');
+        if(Auth()->user()->paymentStatus != 'approve'){
+            return view('/welcome');
+        }
+
+        else{
+            $deleteMaterial = Material::find($id);
+            $deleteMaterial -> delete();
+            Session:: flash('success',"Course was Delete Successfully!");
+            Return redirect()->route('viewMaterial');
+        }
+        
     }
 }
