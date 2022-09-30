@@ -58,6 +58,8 @@ class MaterialController extends Controller
 
         
     }
+
+    
 /*
     public function viewMaterial1(){
         $materials=DB::table('materials')
@@ -87,9 +89,9 @@ class MaterialController extends Controller
         else{
             $material=Material::all()->where('id',$id);
 
-        Return view('editMaterial')
-        ->with('material',$material)
-        ->with('CourseID',Course::all());
+            Return view('editMaterial')
+            ->with('material',$material)
+            ->with('CourseID',Course::all());
         }
         
         

@@ -11,60 +11,45 @@
 <body>
 
 <!-- home section  -->
-@foreach($courses as $course)
 <div class="container">
     <section class="home">
 
         <div class="content">
-            <h3>{{$course->name}}</h3>
+        <h3>Class Content:</h3><br>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">Lesson</th>
+                <th scope="col">Lesson Name</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach($lessons as $lesson)
+                <tr>
+                <th scope="row">{{$loop->iteration}}</th>
+                <td>{{ $lesson->name }}</td>
+                <td><a href="{{ url('/Lesson/' . $lesson->courseID. '/' . $lesson->id) }}" class="btn btn-outline-success"> Enter </a></td>
+                </tr>  
+                @endforeach              
+            </tbody>
+        </table>
     <br>
 
     <section class="contact">
 
     <div class="image">
-        <img src="{{ asset('images/') }}/{{$course->image}}" alt="">
+        <img src="{{ asset('images/') }}/" alt="">
     </div>
-    <div class="box">
-                <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">Provided</p>
-                    <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">By</p>
-                            <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">E-EDU Center</p>
-                                <br>
-                        @if(Auth::user()->paymentStatus == 'approve' || Auth::user()->role=='teacher' || Auth::user()->role=='admin')
-                            <a href="{{ route('enroll.class', ['id' => $course -> id]) }}" class="btn">ENROLL</a>
-                            <!-- <a href="{{ url('/Lesson/' . $course->id. '/' . $lesson->id) }}" class="btn">ENROLL</a>                         -->
-                            
-                        @endif
+    
 
-                        @if(Auth::user()->paymentStatus == null || Auth::user()->paymentStatus == 'notApprove')
-                        <a href="{{ route('plans.all') }}" class="btn" >Go to Paid First</a>
-                        @endif
-                                </div>
-    </section>
-    @endforeach
-
-        <h3>Class Content:</h3>
-
-<section class="container">
-    <div class="home">
-    <button class="btn contentbtn1">Word Forms</button>
-    <button class="btn contentbtn2">Simple Present Tense</button>
-    <button class="btn contentbtn3">Present Progressive</button>
-    <button class="btn contentbtn4">Future Tenses</button>
-    <button class="btn contentbtn4">Simple Past Tense</button>
-    </div>
-
-</section>
-    </div>
-  </section>  
 
 <section class="">
+    
 
-    <div class="content">
-        <h4>You will receive the certificate when you complete this subject</h4>
-        <!--<h4 style="color:red">! free account didn't provide any certificate</h4>-->
-
-
-<section class="contact">
+    <section class="contact">
 
 <div class="image">
     <img src="images/ExampleCert.png" alt="">

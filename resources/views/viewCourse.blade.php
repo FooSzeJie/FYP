@@ -25,7 +25,8 @@
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
             <img src="{{ asset('images/') }}/{{$course->image}}" alt="image" class="image">
-            <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a>
+            <!-- <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a> -->
+            <a href="{{ url('/Lesson/' . $course->id) }}" class="btn">learn more</a>
             @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
             
     <a href="{{ route('editCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Edit</a>
@@ -57,7 +58,9 @@
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
             <img src="{{ asset('images/') }}/{{$course->image}}" alt="image" class="image">
-            <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a>
+            <!-- <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a> -->
+            <a href="{{ url('/Lesson/' . $course->id) }}" class="btn">learn more</a>
+            
             @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
             
     <a href="{{ route('editCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Edit</a>
@@ -86,7 +89,9 @@
     <div class="box">
     <span class="amount">{{$course->amount}}</span>
             <img src="{{ asset('images/') }}/{{$course->image}}" alt="image" class="image">
-            <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a>
+            <!-- <a href="{{ route('CourseDetails', ['id' => $course -> id])}}" class="btn">learn more</a> -->
+            <a href="{{ route('lesson', ['CourseID' => $course -> id]) }}" class="btn">learn more</a>
+
             @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
             
     <a href="{{ route('editCourse',['id'=>$course->id])}}" class="btn btn-primary btn-xs">Edit</a>

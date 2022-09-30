@@ -6,6 +6,18 @@
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <style>
+        .bttn
+        {
+            display: inline-block;
+            margin-top: 1rem;
+            padding:.8rem 3rem;
+            border-radius: .5rem;
+            background:#333;
+            color:#fff;
+            font-size: 1.7rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,38 +42,23 @@
                             <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">E-EDU Center</p>
                                 <br>
                         @if(Auth::user()->paymentStatus == 'approve' || Auth::user()->role=='teacher' || Auth::user()->role=='admin')
-                            <a href="{{ route('enroll.class', ['id' => $course -> id]) }}" class="btn">ENROLL</a>
-                            <!-- <a href="{{ url('/Lesson/' . $course->id. '/' . $lesson->id) }}" class="btn">ENROLL</a>                         -->
+                           
+                            <a href="{{ url('/Lesson/' . $course->id. '/view') }}" class="btn">ENROLL</a>                        
                             
                         @endif
 
                         @if(Auth::user()->paymentStatus == null || Auth::user()->paymentStatus == 'notApprove')
                         <a href="{{ route('plans.all') }}" class="btn" >Go to Paid First</a>
                         @endif
-                                </div>
+
+                        @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
+                        <a href="{{ url('/Lesson/' . $course->id. '/addLesson') }}" class="btn" >Create Lesson</a>
+                        @endif
+                        </div>
     </section>
     @endforeach
 
-        <h3>Class Content:</h3>
-
-<section class="container">
-    <div class="home">
-    <button class="btn contentbtn1">Word Forms</button>
-    <button class="btn contentbtn2">Simple Present Tense</button>
-    <button class="btn contentbtn3">Present Progressive</button>
-    <button class="btn contentbtn4">Future Tenses</button>
-    <button class="btn contentbtn4">Simple Past Tense</button>
-    </div>
-
-</section>
-    </div>
-  </section>  
-
-<section class="">
-
-    <div class="content">
-        <h4>You will receive the certificate when you complete this subject</h4>
-        <!--<h4 style="color:red">! free account didn't provide any certificate</h4>-->
+        
 
 
 <section class="contact">

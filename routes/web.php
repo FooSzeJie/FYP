@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LessonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +96,19 @@ Route::get('editMaterial/{id}',[App\Http\Controllers\MaterialController::class,'
 Route::post('/updateMaterial',[App\Http\Controllers\MaterialController::class,'updateMaterial'])->name('updateMaterial');
 
 Route::get('/deleteMaterial/{id}', [App\Http\Controllers\MaterialController::class,'deleteMaterial'])->name('deleteMaterial');
+
+//-------------------------------------------Lessons Page-----------------------------------------------------------//
+//Route::resource('Lesson.lesson', LessonController::class);
+
+Route::get('/Lesson/{CourseID}', [LessonController::class,'index'])->name('lesson');
+
+Route::get('/Lesson/{CourseID}/view', [LessonController::class,'view']);
+
+Route::get('/Lesson/{CourseID}/addLesson',[LessonController::class,'create']);
+
+Route::post('/Lesson/{CourseID}/addLesson/create',[LessonController::class,'store'])->name('createLesson');
+
+Route::get('/Lesson/{CourseID}/{id}',[LessonController::class,'show']);
 
 //-------------------------------------------Event Page-----------------------------------------------------------//
 Route::get('/event', function () {

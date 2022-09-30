@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Course;
 use App\Models\Category;
+use App\Models\Lesson;
 use App\Models\User;
 use Session;
 use Auth;
@@ -100,6 +101,7 @@ class CourseController extends Controller
     }
 
     public function detail($id){
+        
         $courses=Course::all()->where('id',$id);
         Return view('CourseDetails')->with('courses',$courses)->with('CategoryID',Category::all());
     } 
