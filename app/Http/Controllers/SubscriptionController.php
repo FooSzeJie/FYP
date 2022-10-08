@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Plan as ModelsPlan;
 use App\Models\User;
+use Laravel\Cashier\Subscription;
 use Stripe\Plan;
 use Auth;
 use Stripe;
@@ -158,5 +159,36 @@ class SubscriptionController extends Controller
         
         $status->paymentStatus = 'approve';
         $status->save();
+    }
+
+    public function allSubscriptions()
+    {
+        $subscriptions = Subscription::where('user_id', auth()->id())->get();
+        return view('stripe.subscriptions.index', compact('subscriptions'));
+    }
+
+    public function cancelSubscriptions(Request $request)
+    {
+        $subscriptionName = $request->subscriptionName;
+        if($subscriptionName){
+            $user = auth()->user();
+            $user->subscription($subscriptionName)->cancel();
+
+            return 'subsc is canceled';
+        }
+
+        
+
+    }
+
+    public function resumeSubscriptions(Request $request)
+    {
+        $user = auth()->user();
+        $subscriptionName = $request->subscriptionName;
+        if($subscriptionName){
+            $user->subscription($subscriptionName)->resume();
+
+            return 'subsc is resumed';
+        }
     }
 }

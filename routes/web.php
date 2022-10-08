@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\SubscriptionController;
+use App\Models\Plan;
 
 /*
 |--------------------------------------------------------------------------
@@ -177,6 +179,13 @@ Route::get('plans',[App\Http\Controllers\SubscriptionController::class,'allPlans
 Route::get('plans/checkout/{planId}',[App\Http\Controllers\SubscriptionController::class,'checkout'])->name('plans.checkout');
 
 Route::post('plans/process',[App\Http\Controllers\SubscriptionController::class,'processPlan'])->name('plans.process');
+
+//-------------------------------------------Subscription-----------------------------------------------------------//
+Route::get('subscriptions/all',[SubscriptionController::class,'allSubscriptions'])->name('subscriptions.all');
+
+Route::get('subscriptions/cancel',[SubscriptionController::class,'cancelSubscriptions'])->name('subscriptions.cancel');
+
+Route::get('subscriptions/resume',[SubscriptionController::class,'resumeSubscriptions'])->name('subscriptions.resume');
 
 //-------------------------------------------home Page-----------------------------------------------------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

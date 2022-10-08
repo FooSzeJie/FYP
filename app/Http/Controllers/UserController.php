@@ -17,6 +17,7 @@ class UserController extends Controller
 
     public function view($id){
         $users=User::all()->where('id',$id);
+        
         return view('profile')->with('users',$users);
     }
 
