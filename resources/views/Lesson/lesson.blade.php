@@ -1,7 +1,8 @@
 @extends('layouts')
 @section('content')
 <head>
-    <title>E-ENGL</title>
+@foreach($courses as $course)
+    <title>{{ $course->name }}</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -23,7 +24,6 @@
 <body>
 
 <!-- home section  -->
-@foreach($courses as $course)
 <div class="container">
     <section class="home">
 
@@ -41,19 +41,28 @@
                     <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">By</p>
                             <p style = "font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:#6099b5">E-EDU Center</p>
                                 <br>
-                        @if(Auth::user()->paymentStatus == 'approve' || Auth::user()->role=='teacher' || Auth::user()->role=='admin')
-                           
-                            <a href="{{ url('/Lesson/' . $course->id. '/view') }}" class="btn">ENROLL</a>                        
-                            
-                        @endif
 
-                        @if(Auth::user()->paymentStatus == null || Auth::user()->paymentStatus == 'notApprove')
-                        <a href="{{ route('plans.all') }}" class="btn" >Go to Paid First</a>
-                        @endif
+                                @guest
+                                <P>Please Login Account First. <a href="{{ url('/login') }}">Login</a></P>
+                                @endguest
 
-                        @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
-                        <a href="{{ url('/Lesson/' . $course->id. '/addLesson') }}" class="btn" >Create Lesson</a>
-                        @endif
+                                @auth
+                                @if(Auth::user()->paymentStatus == 'approve' || Auth::user()->role=='teacher' || Auth::user()->role=='admin')
+                                
+                                    <a href="{{ url('/Lesson/' . $course->id. '/view') }}" class="btn">ENROLL</a>
+                                    
+                                    
+                                @endif
+
+                                @if(Auth::user()->paymentStatus == null || Auth::user()->paymentStatus == 'notApprove')
+                                <a href="{{ route('plans.all') }}" class="btn" >Go to Paid First</a>
+                                @endif
+
+                                @if(Auth::check() && Auth::user()->role=='admin' || Auth::check() && Auth::user()->id == $course->teacher)
+                                <a href="{{ url('/Lesson/' . $course->id. '/addLesson') }}" class="btn" >Create Lesson</a>
+                                @endif
+                                @endauth
+                        
                         </div>
     </section>
     @endforeach
@@ -127,6 +136,8 @@
 
 <!-- custom js file link -->
 <script src="js/script.js"></script>
+<script type="text/javascript" src="{{ asset('js/global.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/lesson.js') }}"></script>
 
 </body>
 @endsection

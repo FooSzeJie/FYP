@@ -1,5 +1,8 @@
 @extends('layouts')
 @section('content')
+<head>
+    <title>Teacher</title>
+</head>
 
 <div class="container">
 <h1 class="heading"> Experienced Instructors </h1>

@@ -77,7 +77,7 @@ users learn more easily.</p>
             <a href="{{route('profile',['id'=>Auth::user()->id])}}">{{ Auth::user()->name }}</a>
             @endauth
             @guest
-            <a href="login">Login</a>
+            <a href="{{ url('/login') }}">Login</a>
             @endguest
         </div>
 

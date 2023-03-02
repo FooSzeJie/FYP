@@ -20,12 +20,20 @@ class CategoryController extends Controller
         Return redirect()->route('showCategory');
     }
 
+    // public function show(){
+    //     $category = DB::table('categories')
+    //     //-get();
+    //     ->paginate(5);
+
+    //     return view('showCategory')->with('categories',$category);
+    // }
+
     public function show(){
         $category = DB::table('categories')
-        //-get();
-        ->paginate(5);
+        ->get();
+        // ->paginate(5);
 
-        return view('showCategory')->with('categories',$category);
+        return view('Admin.Category.categoryInfo')->with('categories',$category);
     }
 
     public function edit($id){

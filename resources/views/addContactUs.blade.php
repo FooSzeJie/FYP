@@ -17,8 +17,14 @@
 <form action="{{route('addContact')}}" method="POST">
     @CSRF
     <div class="inputBox">
+        @guest
+        <input type="hidden" class="form-control" id="userID" name="userID" value="null">
+        @endguest
+
+        @auth
         <label for="studentName">Your Name: </label>
         <label type="text" class="form-control" id="userID" name="userID" value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</label>
+        @endauth
         <input type="hidden" name="courseID" id="courseID">
     </div>
 

@@ -1,9 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+// Controllers
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+
+// Middleware
+use App\Http\Middleware\AdminCheck;
+use App\Http\Middleware\AlreadyAdminLogin;
+
+// Models
 use App\Models\Plan;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,15 +65,6 @@ Route::get('editCourse/{id}',[App\Http\Controllers\CourseController::class,'edit
 Route::post('/updateCourse',[App\Http\Controllers\CourseController::class,'update'])->name('updateCourse');
 
 Route::get('/deleteCourse/{id}', [App\Http\Controllers\CourseController::class,'delete'])->name('deleteCourse');
-
-//-------------------------------------------Edit User Page-----------------------------------------------------------//
-Route::get('viewUser',[App\Http\Controllers\AdminController::class,'view'])->name('viewUser');
-
-Route::get('editAdmin/{id}',[App\Http\Controllers\AdminController::class,'editAdmin'])->name('editAdmin');
-
-Route::get('editTeacher/{id}',[App\Http\Controllers\AdminController::class,'editTeacher'])->name('editTeacher');
-
-Route::get('editUser/{id}',[App\Http\Controllers\AdminController::class,'editUser'])->name('editUser');
 
 //-------------------------------------------Teacher Page-----------------------------------------------------------//
 Route::get('viewTeacher',[App\Http\Controllers\TeacherController::class,'show'])->name('viewTeacher');
@@ -186,6 +188,37 @@ Route::get('subscriptions/all',[SubscriptionController::class,'allSubscriptions'
 Route::get('subscriptions/cancel',[SubscriptionController::class,'cancelSubscriptions'])->name('subscriptions.cancel');
 
 Route::get('subscriptions/resume',[SubscriptionController::class,'resumeSubscriptions'])->name('subscriptions.resume');
+
+//-------------------------------------------Admin Page-----------------------------------------------------------//
+Route::get('/adminLogin', [AdminController::class, 'login'])->middleware('adminLogined');
+
+Route::post('/adminLogin/user',[AdminController::class, 'loginAdmin'])->name('loginAdmin');
+
+Route::middleware([AdminCheck::class])->group(function(){
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
+
+    Route::get('/admin/userInfo', [AdminController::class, 'userInfo']);
+
+    Route::get('/admin/userInfo/{id}', [AdminController::class, 'viewUserData']);
+
+    Route::get('/admin/deleteUser/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
+
+    Route::get('/admin/categoryInfo', [CategoryController::class, 'show']);
+
+});
+
+Route::get('/admin/adminLogout', [AdminController::class, 'logout'])->name('adminLogout');
+
+
+
+// old
+Route::get('viewUser',[App\Http\Controllers\AdminController::class,'view'])->name('viewUser');
+
+Route::get('editAdmin/{id}',[App\Http\Controllers\AdminController::class,'editAdmin'])->name('editAdmin');
+
+Route::get('editTeacher/{id}',[App\Http\Controllers\AdminController::class,'editTeacher'])->name('editTeacher');
+
+Route::get('editUser/{id}',[App\Http\Controllers\AdminController::class,'editUser'])->name('editUser');
 
 //-------------------------------------------home Page-----------------------------------------------------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

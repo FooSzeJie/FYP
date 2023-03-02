@@ -1,5 +1,6 @@
 window._ = require('lodash');
 
+
 try {
     require('bootstrap');
 } catch (e) {}
@@ -30,3 +31,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+// window.jquery = require('jquery')
+import $ from 'jquery';
+window.$ = $;
